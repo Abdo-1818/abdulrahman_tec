@@ -3,1656 +3,383 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Abdulrahman Tec - Your Smart Programming Solutions Platform">
-    <title>Abdulrahman Tec | Smart Programming Solutions</title>
-    
+    <meta name="description" content="Abdulrahman Tec - Learn Programming From Scratch">
+    <title>Abdulrahman Tec | Learn Programming</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
-            --sky-blue: #00C6FF;
-            --sky-blue-light: #33D1FF;
-            --sky-blue-dark: #0099CC;
-            --sky-blue-glow: #00E5FF;
-            --black: #0A0A1A;
-            --black-light: #12122A;
-            --black-surface: #1A1A35;
-            --white: #F0F0FF;
-            --white-pure: #FFFFFF;
-            --gray: #A0A0C0;
-            --gray-light: #C0C0D8;
-            --gray-dark: #606080;
-            --border: rgba(0, 198, 255, 0.15);
-            --border-glow: rgba(0, 229, 255, 0.4);
-            --glass: rgba(18, 18, 42, 0.8);
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
-            --shadow-glow: 0 0 60px rgba(0, 198, 255, 0.15);
-            --shadow-glow-strong: 0 0 80px rgba(0, 229, 255, 0.25);
-            --radius-sm: 12px;
-            --radius-md: 20px;
-            --radius-lg: 30px;
-            --radius-xl: 50px;
-            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --bg: #FFFFFF;
+            --bg-secondary: #F8F8F8;
+            --text: #1A1A1A;
+            --text-secondary: #333;
+            --text-muted: #555;
+            --border: #D5D5D5;
+            --border-dark: #1A1A1A;
+            --accent: #1A1A1A;
+            --shadow-sm: 0 2px 6px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 35px rgba(0,0,0,0.1);
+            --radius-sm: 8px; --radius-md: 14px; --radius-lg: 22px; --radius-xl: 50px;
+            --transition: 0.3s ease;
         }
-
+        * { margin:0; padding:0; box-sizing:border-box; }
         body {
             font-family: 'Inter', 'Cairo', sans-serif;
-            background: var(--black);
-            color: var(--white);
-            line-height: 1.8;
-            min-height: 100vh;
-            overflow-x: hidden;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.85; min-height:100vh; overflow-x:hidden;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
-
-        body.rtl {
-            font-family: 'Cairo', 'Inter', sans-serif;
-            direction: rtl;
-        }
-
-        /* Animated Background Layers */
-        .bg-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .bg-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(140px);
-            opacity: 0.12;
-            will-change: transform;
-        }
-
-        .bg-orb-1 {
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, var(--sky-blue) 0%, transparent 70%);
-            top: -250px;
-            right: -200px;
-            animation: orbFloat1 25s infinite ease-in-out;
-        }
-
-        .bg-orb-2 {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, var(--sky-blue-glow) 0%, transparent 70%);
-            bottom: -200px;
-            left: -150px;
-            animation: orbFloat2 30s infinite ease-in-out;
-        }
-
-        .bg-orb-3 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, var(--sky-blue-light) 0%, transparent 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: orbFloat3 20s infinite ease-in-out;
-        }
-
-        @keyframes orbFloat1 {
-            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            33% { transform: translate(80px, -60px) scale(1.1) rotate(5deg); }
-            66% { transform: translate(-40px, 80px) scale(0.9) rotate(-3deg); }
-        }
-
-        @keyframes orbFloat2 {
-            0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            33% { transform: translate(-60px, 40px) scale(1.15) rotate(-5deg); }
-            66% { transform: translate(70px, -50px) scale(0.85) rotate(3deg); }
-        }
-
-        @keyframes orbFloat3 {
-            0%, 100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); }
-            50% { transform: translate(-50%, -50%) scale(1.2) rotate(8deg); }
-        }
-
-        .bg-grid {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 198, 255, 0.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 198, 255, 0.025) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .bg-particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            background: var(--sky-blue);
-            border-radius: 50%;
-            animation: particleFloat 8s infinite ease-in-out;
-            opacity: 0;
-        }
-
-        @keyframes particleFloat {
-            0% { opacity: 0; transform: translateY(0) scale(0); }
-            10% { opacity: 0.6; }
-            50% { opacity: 0.3; transform: translateY(-100px) scale(1); }
-            90% { opacity: 0; }
-            100% { opacity: 0; transform: translateY(-200px) scale(0); }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Language Switcher */
+        body.rtl { font-family:'Cairo','Inter',sans-serif; direction:rtl; }
+        .container { max-width:1100px; margin:0 auto; padding:0 24px; position:relative; z-index:2; }
         .lang-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            gap: 4px;
-            background: var(--glass);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-xl);
-            padding: 4px;
-            box-shadow: var(--shadow-md);
+            position: fixed; top:16px; right:16px; z-index:1000; display:flex; gap:4px;
+            background:#FFF; border:1.5px solid #1A1A1A; border-radius:50px; padding:4px;
+            box-shadow: var(--shadow-lg);
         }
-
-        body.rtl .lang-switcher {
-            right: auto;
-            left: 20px;
-        }
-
+        body.rtl .lang-switcher { right:auto; left:16px; }
         .lang-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            transition: all var(--transition-smooth);
-            color: var(--gray);
-            font-family: inherit;
-            letter-spacing: 0.5px;
-            position: relative;
-        }
-
-        .lang-btn:hover {
-            color: var(--white-pure);
-            background: rgba(0, 198, 255, 0.1);
-        }
-
-        .lang-btn.active {
-            background: var(--sky-blue);
-            color: var(--black);
-            font-weight: 800;
-            box-shadow: 0 0 25px rgba(0, 198, 255, 0.5);
-            animation: pulseGlow 2s infinite;
-        }
-
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 25px rgba(0, 198, 255, 0.5); }
-            50% { box-shadow: 0 0 45px rgba(0, 229, 255, 0.7); }
-        }
-
-        /* Header */
-        .header {
-            text-align: center;
-            padding: 70px 0 30px;
-        }
-
-        .logo-icon {
-            font-size: 5rem;
-            margin-bottom: 15px;
-            animation: floatIcon 3s infinite ease-in-out;
-            display: inline-block;
-        }
-
-        @keyframes floatIcon {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .logo {
-            font-size: 4.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--sky-blue-glow) 0%, var(--white-pure) 40%, var(--sky-blue-light) 60%, var(--sky-blue-glow) 100%);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: logoShine 4s ease infinite;
-            margin-bottom: 12px;
-            letter-spacing: -1px;
-        }
-
-        @keyframes logoShine {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .tagline {
-            color: var(--gray-light);
-            font-size: 1.1rem;
-            font-weight: 400;
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0.8;
-        }
-
-        /* Problem Form */
-        .form-wrapper {
-            max-width: 680px;
-            margin: 0 auto 50px;
-        }
-
-        .form-card {
-            background: var(--glass);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 40px;
-            box-shadow: var(--shadow-md), var(--shadow-glow);
-            transition: all var(--transition-smooth);
-        }
-
-        .form-card:hover {
-            border-color: var(--border-glow);
-            box-shadow: var(--shadow-md), var(--shadow-glow-strong);
-        }
-
-        .form-group {
-            margin-bottom: 22px;
-        }
-
-        .form-label {
-            display: block;
-            color: var(--sky-blue-light);
-            font-weight: 600;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-            letter-spacing: 0.3px;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 14px 18px;
-            background: rgba(10, 10, 26, 0.6);
-            border: 1.5px solid var(--border);
-            border-radius: var(--radius-sm);
-            color: var(--white-pure);
-            font-family: inherit;
-            font-size: 0.95rem;
-            transition: all var(--transition-smooth);
-            outline: none;
-        }
-
-        .form-input:focus {
-            border-color: var(--sky-blue);
-            box-shadow: 0 0 30px rgba(0, 198, 255, 0.15);
-            background: rgba(10, 10, 26, 0.8);
-        }
-
-        .form-input::placeholder {
-            color: var(--gray-dark);
-        }
-
-        .form-textarea {
-            min-height: 140px;
-            resize: vertical;
-            line-height: 1.7;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, var(--sky-blue), var(--sky-blue-dark));
-            border: none;
-            border-radius: var(--radius-md);
-            color: var(--black);
-            font-weight: 700;
-            font-size: 1.05rem;
-            cursor: pointer;
-            font-family: inherit;
-            transition: all var(--transition-smooth);
-            letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s;
-        }
-
-        .submit-btn:hover::before {
-            left: 100%;
-        }
-
-        .submit-btn:hover {
-            box-shadow: 0 0 50px rgba(0, 198, 255, 0.5);
-            transform: translateY(-3px);
-        }
-
-        .submit-btn:active {
-            transform: translateY(-1px) scale(0.98);
-        }
-
-        /* Articles Section */
-        .section-title {
-            text-align: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--sky-blue-light);
-            margin-bottom: 40px;
-            position: relative;
-            letter-spacing: -0.5px;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--sky-blue-glow), transparent);
-            margin: 12px auto 0;
-            border-radius: 2px;
-        }
-
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 24px;
-            margin-bottom: 50px;
-        }
-
-        .article-card {
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 28px;
-            transition: all var(--transition-smooth);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            animation: fadeInUp 0.6s ease forwards;
-            opacity: 0;
-        }
-
-        .article-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% 0%, rgba(0, 198, 255, 0.05) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity var(--transition-smooth);
-        }
-
-        .article-card:hover::before {
-            opacity: 1;
-        }
-
-        .article-card:hover {
-            border-color: var(--border-glow);
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-md), 0 15px 50px rgba(0, 198, 255, 0.15);
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .article-category {
-            display: inline-block;
-            padding: 5px 14px;
-            background: rgba(0, 198, 255, 0.08);
-            border: 1px solid rgba(0, 198, 255, 0.2);
-            color: var(--sky-blue-light);
-            border-radius: 50px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            margin-bottom: 14px;
-            letter-spacing: 0.3px;
-        }
-
-        .article-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--white-pure);
-            margin-bottom: 12px;
-            line-height: 1.5;
-        }
-
-        .article-preview {
-            color: var(--gray);
-            font-size: 0.9rem;
-            line-height: 1.8;
-            margin-bottom: 18px;
-        }
-
-        .article-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-        }
-
-        .article-tag {
-            padding: 4px 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 50px;
-            font-size: 0.72rem;
-            color: var(--gray-dark);
-            transition: all var(--transition-fast);
-        }
-
-        .article-card:hover .article-tag {
-            border-color: rgba(0, 198, 255, 0.2);
-            color: var(--gray);
-        }
-
-        .read-more {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--sky-blue);
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-top: 16px;
-            transition: all var(--transition-fast);
-        }
-
-        .article-card:hover .read-more {
-            gap: 12px;
-        }
-
-        /* Solutions Section */
-        .solutions-section {
-            padding: 20px 0 60px;
-        }
-
-        .solution-card {
-            background: var(--glass);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 35px;
-            margin-bottom: 24px;
-            transition: all var(--transition-smooth);
-        }
-
-        .solution-card:hover {
-            border-color: var(--border-glow);
-            box-shadow: var(--shadow-md), var(--shadow-glow);
-        }
-
-        .solution-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .solution-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--sky-blue-light);
-            flex: 1;
-        }
-
-        .solution-badges {
-            display: flex;
-            gap: 7px;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            padding: 5px 14px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-        }
-
-        .badge-lang {
-            background: rgba(0, 198, 255, 0.15);
-            color: var(--sky-blue-light);
-            border: 1px solid rgba(0, 198, 255, 0.3);
-        }
-
-        .badge-level {
-            background: rgba(76, 175, 80, 0.12);
-            color: #81C784;
-            border: 1px solid rgba(76, 175, 80, 0.25);
-        }
-
-        .solution-content {
-            color: var(--gray-light);
-            line-height: 2;
-            margin-bottom: 22px;
-        }
-
-        .solution-content h3 {
-            color: var(--sky-blue-glow);
-            margin: 22px 0 10px;
-            font-size: 1.15rem;
-            font-weight: 700;
-        }
-
-        .solution-content ul,
-        .solution-content ol {
-            padding-left: 20px;
-            margin: 10px 0;
-        }
-
-        body.rtl .solution-content ul,
-        body.rtl .solution-content ol {
-            padding-left: 0;
-            padding-right: 20px;
-        }
-
-        .solution-content li {
-            padding: 6px 0;
-            color: var(--gray);
-        }
-
-        .code-block {
-            background: #050510;
-            border: 1px solid rgba(0, 198, 255, 0.25);
-            border-radius: var(--radius-md);
-            padding: 22px;
-            position: relative;
-            overflow-x: auto;
-            margin: 20px 0;
-            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .code-block pre {
-            color: var(--sky-blue-glow);
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            line-height: 1.7;
-            direction: ltr;
-            text-align: left;
-            white-space: pre-wrap;
-            word-break: break-word;
-        }
-
-        .code-block code {
-            font-family: 'JetBrains Mono', monospace;
-            background: rgba(0, 198, 255, 0.08);
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: var(--sky-blue-light);
-            font-size: 0.85em;
-        }
-
-        .copy-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            padding: 7px 16px;
-            background: rgba(0, 198, 255, 0.1);
-            border: 1px solid rgba(0, 198, 255, 0.3);
-            color: var(--sky-blue-light);
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 0.78rem;
-            font-weight: 600;
-            transition: all var(--transition-fast);
-            z-index: 5;
-        }
-
-        body.rtl .copy-btn {
-            right: auto;
-            left: 12px;
-        }
-
-        .copy-btn:hover {
-            background: var(--sky-blue);
-            color: var(--black);
-            border-color: var(--sky-blue);
-            box-shadow: 0 0 20px rgba(0, 198, 255, 0.4);
-        }
-
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 18px;
-        }
-
-        .tag {
-            padding: 5px 13px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 50px;
-            font-size: 0.75rem;
-            color: var(--gray-dark);
-            transition: all var(--transition-fast);
-        }
-
-        .tag:hover {
-            border-color: var(--sky-blue);
-            color: var(--sky-blue-light);
-            background: rgba(0, 198, 255, 0.05);
-        }
-
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 22px;
-            background: transparent;
-            border: 1.5px solid var(--border);
-            color: var(--sky-blue-light);
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all var(--transition-smooth);
-            margin-top: 15px;
-        }
-
-        .back-btn:hover {
-            border-color: var(--sky-blue);
-            background: rgba(0, 198, 255, 0.05);
-            box-shadow: 0 0 25px rgba(0, 198, 255, 0.15);
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 60px 20px;
-        }
-
-        .no-results .icon {
-            font-size: 5rem;
-            display: block;
-            margin-bottom: 20px;
-        }
-
-        .no-results h3 {
-            color: var(--gray-light);
-            margin-bottom: 12px;
-            font-size: 1.3rem;
-        }
-
-        .no-results p {
-            color: var(--gray-dark);
-            margin-bottom: 20px;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 30px;
-            border-top: 1px solid var(--border);
-            color: var(--gray-dark);
-            font-size: 0.85rem;
-            margin-top: 40px;
-        }
-
-        .footer span {
-            color: var(--sky-blue-light);
-            font-weight: 700;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--black);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--sky-blue-dark);
-            border-radius: 3px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--sky-blue);
-        }
-
-        /* Selection */
-        ::selection {
-            background: rgba(0, 198, 255, 0.3);
-            color: var(--white-pure);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .logo {
-                font-size: 2.5rem;
-            }
-            .logo-icon {
-                font-size: 3.5rem;
-            }
-            .articles-grid {
-                grid-template-columns: 1fr;
-            }
-            .form-card {
-                padding: 25px;
-            }
-            .solution-card {
-                padding: 22px;
-            }
-            .lang-switcher {
-                top: 10px;
-                right: 10px;
-            }
-            body.rtl .lang-switcher {
-                left: 10px;
-            }
-            .lang-btn {
-                width: 38px;
-                height: 38px;
-                font-size: 0.7rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 2rem;
-            }
-            .header {
-                padding: 40px 0 20px;
-            }
-            .form-card {
-                padding: 18px;
-                border-radius: var(--radius-md);
-            }
-            .solution-header {
-                flex-direction: column;
-            }
-        }
+            width:40px; height:40px; border-radius:50%; border:none; cursor:pointer;
+            font-size:0.75rem; font-weight:700; display:flex; align-items:center; justify-content:center;
+            background:transparent; transition:all 0.3s; color:#1A1A1A; font-family:inherit;
+        }
+        .lang-btn:hover { background:#E8E8E8; }
+        .lang-btn.active { background:#1A1A1A; color:#FFF; font-weight:800; }
+        .header { text-align:center; padding:50px 0 18px; border-bottom:2px solid #1A1A1A; }
+        .logo-icon { font-size:3.8rem; animation:floatIcon 3s infinite ease-in-out; display:inline-block; }
+        @keyframes floatIcon { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+        .logo { font-size:2.6rem; font-weight:900; color:#000; }
+        .tagline { color:#444; font-size:0.95rem; max-width:500px; margin:0 auto; opacity:0.85; }
+        .section-title { text-align:center; font-size:1.5rem; font-weight:700; color:#000; margin-bottom:30px; }
+        .section-title::after { content:''; display:block; width:55px; height:3px; background:#1A1A1A; margin:10px auto 0; }
+        .courses-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:18px; margin-bottom:50px; padding:20px 0; }
+        .course-card {
+            background:#FFF; border:1.5px solid #1A1A1A; border-radius:22px; padding:26px 22px;
+            transition:all 0.3s; cursor:pointer; animation:fadeInUp 0.5s ease forwards; opacity:0;
+            display:flex; flex-direction:column; gap:10px;
+        }
+        .course-card:hover { background:#1A1A1A; color:#FFF; transform:translateY(-5px); }
+        .course-card:hover .course-card-title,.course-card:hover .course-card-desc,.course-card:hover span { color:#FFF; }
+        @keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+        .course-card-icon { font-size:2.5rem; }
+        .course-card-title { font-size:1.2rem; font-weight:700; color:#000; }
+        .course-card-desc { color:#555; font-size:0.85rem; flex:1; }
+        .back-btn { display:inline-flex; align-items:center; gap:6px; padding:8px 18px; background:#1A1A1A; border:2px solid #1A1A1A; color:#FFF; border-radius:50px; cursor:pointer; font-weight:600; font-size:0.82rem; transition:all 0.3s; }
+        .back-btn:hover { background:#FFF; color:#000; border-color:#1A1A1A; }
+        .lesson-nav { display:flex; gap:5px; flex-wrap:wrap; margin-bottom:18px; padding:12px; background:#FAFAFA; border:1px solid #DDD; border-radius:14px; max-height:180px; overflow-y:auto; }
+        .lesson-nav-btn { padding:6px 14px; border-radius:50px; border:1.5px solid #CCC; background:#FFF; color:#333; cursor:pointer; font-size:0.74rem; font-weight:500; transition:all 0.3s; }
+        .lesson-nav-btn.active { background:#1A1A1A; color:#FFF; border-color:#1A1A1A; font-weight:700; }
+        .lesson-content { background:#FFF; border:1.5px solid #DDD; border-radius:22px; padding:30px; line-height:1.9; }
+        .lesson-content h3 { color:#000; margin:24px 0 10px; font-size:1.1rem; font-weight:700; border-left:3px solid #1A1A1A; padding-left:12px; }
+        body.rtl .lesson-content h3 { border-left:none; border-right:3px solid #1A1A1A; padding-left:0; padding-right:12px; }
+        .highlight-box { background:#F9F9F9; border:1.5px solid #1A1A1A; border-radius:14px; padding:16px; margin:16px 0; }
+        .code-block { background:#F4F4F4; border:1.5px solid #BBB; border-radius:14px; padding:18px; position:relative; overflow-x:auto; margin:16px 0; direction:ltr; text-align:left; }
+        .code-block pre { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#1A1A1A; }
+        .copy-btn { position:absolute; top:10px; right:10px; background:#1A1A1A; color:#FFF; border:none; border-radius:50px; padding:5px 12px; cursor:pointer; font-size:0.7rem; }
+        .svg-illustration { display:block; margin:16px auto; max-width:100%; height:auto; border:1.5px solid #CCC; border-radius:8px; background:#FAFAFA; }
+        .quiz-box { background:#FFF; border:2px solid #1A1A1A; border-radius:14px; padding:20px; margin-top:25px; }
+        .quiz-box h3 { border:none; padding-left:0; }
+        .quiz-item { margin-bottom:14px; }
+        .quiz-question { font-weight:600; margin-bottom:6px; }
+        .quiz-options { display:flex; flex-wrap:wrap; gap:6px; }
+        .quiz-option { padding:6px 14px; border:1.5px solid #CCC; border-radius:20px; cursor:pointer; font-size:0.8rem; transition:0.2s; background:#FFF; }
+        .quiz-option:hover { border-color:#1A1A1A; background:#F0F0F0; }
+        .quiz-option.selected { background:#1A1A1A; color:#FFF; border-color:#1A1A1A; }
+        .quiz-option.correct { background:#4CAF50!important; color:#FFF; border-color:#4CAF50; }
+        .quiz-option.wrong { background:#F44336!important; color:#FFF; border-color:#F44336; }
+        .quiz-feedback { margin-top:4px; font-size:0.8rem; font-weight:600; }
+        .footer { text-align:center; padding:20px; background:#1A1A1A; color:#CCC; font-size:0.78rem; margin-top:40px; }
+        .hidden { display:none!important; }
+        @media (max-width:768px) { .courses-grid{grid-template-columns:1fr} .lesson-content{padding:16px} }
     </style>
 </head>
 <body>
-    <!-- Background Effects -->
-    <div class="bg-layer">
-        <div class="bg-orb bg-orb-1"></div>
-        <div class="bg-orb bg-orb-2"></div>
-        <div class="bg-orb bg-orb-3"></div>
-    </div>
-    <div class="bg-grid"></div>
-    <div class="bg-particles" id="particlesContainer"></div>
-
-    <!-- Language Switcher -->
     <div class="lang-switcher">
-        <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')" title="English">EN</button>
-        <button class="lang-btn" data-lang="de" onclick="switchLanguage('de')" title="Deutsch">DE</button>
-        <button class="lang-btn" data-lang="ar" onclick="switchLanguage('ar')" title="العربية">AR</button>
+        <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">EN</button>
+        <button class="lang-btn" data-lang="ar" onclick="switchLanguage('ar')">AR</button>
     </div>
-
-    <!-- Header -->
     <header class="header">
         <div class="container">
-            <div class="logo-icon">&#x1F4BB;</div>
+            <div class="logo-icon">💻</div>
             <h1 class="logo">Abdulrahman Tec</h1>
-            <p class="tagline" data-i18n="tagline">Write your programming problem and we'll provide the solution</p>
+            <p class="tagline" data-i18n="tagline">Learn programming from scratch with Arabic & English</p>
         </div>
     </header>
-
-    <!-- Main Form -->
-    <div class="container">
-        <div class="form-wrapper">
-            <div class="form-card">
-                <div class="form-group">
-                    <label class="form-label" data-i18n="name_label">&#x1F464; Your Name</label>
-                    <input type="text" class="form-input" id="userName" data-i18n-placeholder="name_placeholder" placeholder="Enter your name...">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" data-i18n="problem_label">&#x1F50D; What's your programming problem?</label>
-                    <textarea class="form-input form-textarea" id="userProblem" data-i18n-placeholder="problem_placeholder" placeholder="Describe your programming problem in detail..."></textarea>
-                </div>
-                <button class="submit-btn" onclick="solveProblem()" data-i18n="submit_btn">&#x1F50D; Find Solution</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Articles Section -->
-    <section class="articles-section" id="articlesSection">
+    <section id="coursesSection">
         <div class="container">
-            <h2 class="section-title" data-i18n="articles_title">&#x1F4DA; Programming Articles & Solutions</h2>
-            <div class="articles-grid" id="articlesGrid"></div>
+            <h2 class="section-title" data-i18n="courses_title">📚 Choose a Language</h2>
+            <div class="courses-grid" id="coursesGrid"></div>
         </div>
     </section>
-
-    <!-- Solutions Section -->
-    <section class="solutions-section hidden" id="solutionsSection">
-        <div class="container">
-            <h2 class="section-title" data-i18n="solutions_title">&#x1F4A1; Suggested Solutions For Your Problem</h2>
-            <div id="solutionsContainer"></div>
-        </div>
+    <section id="courseDetailSection" class="hidden">
+        <div class="container"><div class="course-detail" id="courseDetailContainer"></div></div>
     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2026 <span>Abdulrahman Tec</span> | <span data-i18n="footer_text">Smart Programming Solutions Platform</span></p>
-    </footer>
+    <footer class="footer"><p>© 2026 <span>Abdulrahman Tec</span> | <span data-i18n="footer_text">Learn Programming From Scratch</span></p></footer>
 
     <script>
-        // ============================================
-        // TRANSLATIONS
-        // ============================================
         const translations = {
-            en: {
-                tagline: "Write your programming problem and we'll provide the solution",
-                name_label: "👤 Your Name",
-                name_placeholder: "Enter your name...",
-                problem_label: "🔍 What's your programming problem?",
-                problem_placeholder: "Describe your programming problem in detail...",
-                submit_btn: "🔍 Find Solution",
-                articles_title: "📚 Programming Articles & Solutions",
-                solutions_title: "💡 Suggested Solutions For Your Problem",
-                footer_text: "Smart Programming Solutions Platform",
-                back_btn: "← Back to Articles",
-                browse_articles: "Browse All Articles",
-                no_results_title: "No direct solution found for your problem",
-                no_results_text: "We suggest reading the following articles that may help you understand and solve your problem",
-                copy_btn: "📋 Copy Code",
-                copied: "✅ Copied!",
-                read_more: "Read full article →",
-                general: "General",
-                debugging: "Debugging",
-                solutions: "Solutions",
-                beginner: "Beginner",
-                intermediate: "Intermediate",
-                advanced: "Advanced",
-                greeting: "Hey",
-                found_solutions: "These are the best solutions for your problem"
-            },
-            de: {
-                tagline: "Schreiben Sie Ihr Programmierproblem und wir liefern die Lösung",
-                name_label: "👤 Ihr Name",
-                name_placeholder: "Geben Sie Ihren Namen ein...",
-                problem_label: "🔍 Was ist Ihr Programmierproblem?",
-                problem_placeholder: "Beschreiben Sie Ihr Programmierproblem im Detail...",
-                submit_btn: "🔍 Lösung finden",
-                articles_title: "📚 Programmierartikel & Lösungen",
-                solutions_title: "💡 Vorgeschlagene Lösungen für Ihr Problem",
-                footer_text: "Plattform für intelligente Programmierlösungen",
-                back_btn: "← Zurück zu den Artikeln",
-                browse_articles: "Alle Artikel durchsuchen",
-                no_results_title: "Keine direkte Lösung für Ihr Problem gefunden",
-                no_results_text: "Wir empfehlen Ihnen, die folgenden Artikel zu lesen, die Ihnen helfen können, Ihr Problem zu verstehen und zu lösen",
-                copy_btn: "📋 Code kopieren",
-                copied: "✅ Kopiert!",
-                read_more: "Ganzen Artikel lesen →",
-                general: "Allgemein",
-                debugging: "Debugging",
-                solutions: "Lösungen",
-                beginner: "Anfänger",
-                intermediate: "Mittelstufe",
-                advanced: "Fortgeschritten",
-                greeting: "Hallo",
-                found_solutions: "Dies sind die besten Lösungen für Ihr Problem"
-            },
-            ar: {
-                tagline: "اكتب مشكلتك البرمجية وسنقدم لك الحل",
-                name_label: "👤 اسمك",
-                name_placeholder: "أدخل اسمك هنا...",
-                problem_label: "🔍 ما هي مشكلتك البرمجية؟",
-                problem_placeholder: "اشرح مشكلتك البرمجية بالتفصيل هنا...",
-                submit_btn: "🔍 إيجاد الحل",
-                articles_title: "📚 مقالات وحلول برمجية",
-                solutions_title: "💡 الحلول المقترحة لمشكلتك",
-                footer_text: "منصة حلول برمجية ذكية",
-                back_btn: "← العودة للمقالات",
-                browse_articles: "تصفح كل المقالات",
-                no_results_title: "لم نجد حلاً مباشراً لمشكلتك",
-                no_results_text: "نقترح عليك قراءة المقالات التالية التي قد تساعدك في فهم وحل مشكلتك",
-                copy_btn: "📋 نسخ الكود",
-                copied: "✅ تم النسخ!",
-                read_more: "اقرأ المقال كاملاً →",
-                general: "عام",
-                debugging: "تصحيح الأخطاء",
-                solutions: "حلول",
-                beginner: "مبتدئ",
-                intermediate: "متوسط",
-                advanced: "متقدم",
-                greeting: "مرحباً",
-                found_solutions: "هذه أفضل الحلول لمشكلتك"
-            }
+            en: { tagline:"Learn programming from scratch with Arabic & English", courses_title:"📚 Choose a Language", footer_text:"Learn Programming From Scratch", back_btn:"← Back", copy_btn:"📋 Copy", copied:"✅ Copied!", lesson:"Lesson", start_learning:"Start →", html_desc:"Build web page structures.", css_desc:"Master styling and design.", python_desc:"Popular beginner language.", cpp_desc:"High-performance programming.", php_desc:"Server-side web development.", react_desc:"Modern UI library." },
+            ar: { tagline:"تعلم البرمجة من الصفر مع العربية والإنجليزية", courses_title:"📚 اختر لغة", footer_text:"تعلم البرمجة من الصفر", back_btn:"← رجوع", copy_btn:"📋 نسخ", copied:"✅ تم النسخ", lesson:"درس", start_learning:"ابدأ ←", html_desc:"بناء هيكل صفحات الويب.", css_desc:"إتقان التصميم والتنسيق.", python_desc:"اللغة الأكثر شعبية للمبتدئين.", cpp_desc:"برمجة عالية الأداء.", php_desc:"تطوير الويب من الخادم.", react_desc:"مكتبة واجهات مستخدم حديثة." }
         };
-
         let currentLang = 'en';
+        function t(k) { return translations[currentLang]?.[k] || translations['en'][k] || k; }
 
-        // ============================================
-        // ARTICLES DATABASE
-        // ============================================
-        const articlesDB = [
-            {
-                id: 1,
-                categoryKey: "general",
-                title: {
-                    en: "The Complete Guide to Solving Programming Errors",
-                    de: "Der vollständige Leitfaden zur Behebung von Programmierfehlern",
-                    ar: "الدليل الشامل لحل الأخطاء البرمجية"
-                },
-                preview: {
-                    en: "As a programmer, regardless of your level, especially if you're a beginner, you will face many programming problems. In this article, you'll learn how to find solutions in a simple and easy way.",
-                    de: "Als Programmierer, unabhängig von Ihrem Niveau, besonders als Anfänger, werden Sie auf viele Programmierprobleme stoßen. In diesem Artikel lernen Sie, wie Sie auf einfache Weise Lösungen finden.",
-                    ar: "كمبرمج مهما كان مستواك خاصة و إن كنت مبتدئ ستواجه العديد من المشاكل البرمجية. في هذا المقال ستتعلم كيف تجد الحل لهذه المشكلات بطريقة بسيطة و سهلة."
-                },
-                tags: ["Programming", "Debugging", "Errors", "Beginners"],
-                content: {
-                    en: `<h3>The Importance of Facing Programming Errors</h3><p>Humans often learn to make better decisions because of their past mistakes. From this perspective, we notice that humans naturally learn and gain awareness from the errors they encounter in life.</p><p>What we just mentioned applies to programming as well. Those with experience can identify code errors and fix them easily, while as a beginner, you might look at an error and think this is the end - you'll quit programming!</p><p>The person you see as an expert in writing code and solving its problems isn't necessarily smarter than you imagine. The errors you see them solving might just be routine, trivial errors for them. Don't think you're stupid because you can't solve programming errors as experienced people do, and you shouldn't think this way because you're being unfair to yourself.</p><p>Be certain that the person who knows how to solve code problems easily and quickly is simply someone who has faced these same problems before, more than once, which made them accustomed to them. Now, as soon as they see error messages in code, they understand the problem and fix it.</p><p>In summary, when you face a problem in code, don't get angry - be happy! Because of this problem, your experience will increase and your programming awareness will grow.</p>`,
-                    de: `<h3>Die Bedeutung der Konfrontation mit Programmierfehlern</h3><p>Menschen lernen oft, bessere Entscheidungen aufgrund ihrer vergangenen Fehler zu treffen. Aus dieser Perspektive bemerken wir, dass Menschen natürlich lernen und Bewusstsein aus den Fehlern gewinnen, denen sie im Leben begegnen.</p><p>Was wir gerade erwähnt haben, gilt auch für die Programmierung. Diejenigen mit Erfahrung können Codefehler identifizieren und leicht beheben, während Sie als Anfänger vielleicht auf einen Fehler schauen und denken, dass dies das Ende ist - Sie werden die Programmierung aufgeben!</p><p>Die Person, die Sie als Experten im Schreiben von Code und Lösen seiner Probleme sehen, ist nicht unbedingt klüger als Sie sich vorstellen. Die Fehler, die Sie sie lösen sehen, könnten nur routinemäßige, triviale Fehler für sie sein. Denken Sie nicht, dass Sie dumm sind, weil Sie Programmierfehler nicht so lösen können wie erfahrene Leute, und Sie sollten nicht so denken, weil Sie sich selbst gegenüber unfair sind.</p><p>Seien Sie sicher, dass die Person, die weiß, wie man Codeprobleme einfach und schnell löst, einfach jemand ist, der dieselben Probleme schon einmal erlebt hat, mehr als einmal, was sie daran gewöhnt hat. Jetzt, sobald sie Fehlermeldungen im Code sehen, verstehen sie das Problem und beheben es.</p><p>Zusammenfassend: Wenn Sie auf ein Problem im Code stoßen, werden Sie nicht wütend - seien Sie glücklich! Wegen dieses Problems wird Ihre Erfahrung zunehmen und Ihr Programmierbewusstsein wird wachsen.</p>`,
-                    ar: `<h3>أهمية مواجهة أخطاء برمجية</h3><p>الإنسان غالباً ما يتعلم اتخاذ قرارات صائبة بسبب أخطائه التي ارتكبها في السابق، من هذا المنطلق نلاحظ أن الإنسان بطبعه يتعلم و يزداد وعيه من الأخطاء التي يواجهها في حياته.</p><p>ما ذكرناه قبل قليل ينطبق على البرمجة أيضاً حيث أن من يملك خبرة فيها تجده قادر على معرفة الخطأ الموجود في الكود و تصحيحه بكل سهولة في حين أنك كمبتدئ تنظر للخطأ تقول بينك و بين نفسك هذه هي النهاية سأترك البرمجة!</p><p>الشخص الذي تجده خبير في كتابة الكود و حل مشاكله ليس بالضرورة أن يكون أذكى منك كما تتصور فقد تكون هذه الأخطاء التي تجده يحلها مجرد أخطاء روتينية تافهة بالنسبة له. لا تظن أنك غبي بسبب عدم قدرتك على حل الأخطاء البرمجية كما يفعل أهل الخبرة و لا يجب أن تفكر بهذه الطريقة لأنك تظلم نفسك.</p><p>كن على يقين أن الشخص الذي يعرف كيف يحل المشاكل التي تظهر في الكود بسهولة و بسرعة هو مجرد شخص واجه نفس هذه المشاكل في السابق و أكثر من مرة مما جعله معتاداً عليها و أصبح بمجرد أن يرى رسائل الأخطاء التي تظهر في الكود تجده فهم المشكلة و أصلحها.</p><p>خلاصة، حين تواجه مشكلة في الكود إياك و أن تغضب بل إفرح لأنه بسبب هذه المشكلة فإن خبرتك ستزيد و وعيك البرمجي سيزيد.</p>`
-                }
-            },
-            {
-                id: 2,
-                categoryKey: "debugging",
-                title: {
-                    en: "Handling Errors Before Running Your Code",
-                    de: "Umgang mit Fehlern vor der Ausführung Ihres Codes",
-                    ar: "معالجة الأخطاء البرمجية قبل تشغيل الكود"
-                },
-                preview: {
-                    en: "Learn how to deal with errors that appear in code before running it and how to understand warning messages and alerts.",
-                    de: "Lernen Sie, wie Sie mit Fehlern umgehen, die im Code vor der Ausführung erscheinen, und wie Sie Warnmeldungen verstehen.",
-                    ar: "تعلم كيفية التعامل مع الأخطاء التي تظهر في الكود قبل تشغيله وكيفية فهم رسائل التحذير والتنبيهات."
-                },
-                tags: ["Syntax", "Errors", "Warnings", "IDE"],
-                content: {
-                    en: `<h3>Handling Pre-Runtime Programming Errors</h3><p>When writing code, you must respect the rules of the programming language you're working with, otherwise the program you're using to write code will show you red lines under the code to tell you there are problems you need to solve for the code to work.</p><p>As a simple example, in Java, if you try to store a decimal number like <code>1.5</code> in a variable of type <code>int</code>, this is not allowed because this type is designated for storing whole numbers without decimals like <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, etc.</p><p>Thus, violating language rules results in a red line appearing under the code causing the problem so you can fix it. If you hover over the red line, the cause of the problem will appear.</p><h3>Is Automatic Code Fixing Always the Best Solution?</h3><p>Of course not! Never think that the suggestions your program shows you are always the best possible solutions.</p><p>To understand more, in the previous example, it was better to convert the variable type to <code>float</code> instead of <code>double</code> because the <code>double</code> type requires more memory space, and we didn't need that space originally.</p>`,
-                    de: `<h3>Umgang mit Pre-Runtime Programmierfehlern</h3><p>Beim Schreiben von Code müssen Sie die Regeln der Programmiersprache respektieren, mit der Sie arbeiten, sonst zeigt Ihnen das Programm rote Linien unter dem Code an, um Ihnen mitzuteilen, dass es Probleme gibt, die Sie lösen müssen, damit der Code funktioniert.</p><p>Als einfaches Beispiel: In Java ist es nicht erlaubt, eine Dezimalzahl wie <code>1.5</code> in einer Variablen vom Typ <code>int</code> zu speichern, da dieser Typ für ganze Zahlen ohne Dezimalstellen wie <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code> usw. vorgesehen ist.</p><p>Die Verletzung von Sprachregeln führt dazu, dass eine rote Linie unter dem problematischen Code erscheint, damit Sie ihn beheben können. Wenn Sie über die rote Linie fahren, erscheint die Ursache des Problems.</p><h3>Ist automatische Codekorrektur immer die beste Lösung?</h3><p>Natürlich nicht! Denken Sie nie, dass die Vorschläge Ihres Programms immer die besten möglichen Lösungen sind.</p><p>Um mehr zu verstehen: Im vorherigen Beispiel war es besser, den Variablentyp in <code>float</code> statt <code>double</code> zu ändern, da der <code>double</code>-Typ mehr Speicherplatz benötigt und wir diesen Platz ursprünglich nicht brauchten.</p>`,
-                    ar: `<h3>معالجة الأخطاء البرمجية التي تظهر قبل تشغيل الكود</h3><p>عند كتابة الكود لا بد من أن تحترم قواعد لغة البرمجة التي تتعامل معها و إلا فإن البرنامج الذي تستخدمه لكتابة الكود سيظهر لك خطوط حمراء تحت الكود ليخبرك بوجود مشاكل يجب أن تحلها لكي يعمل الكود.</p><p>كمثال بسيط، في لغة جافا إذا حاولت تخزين عدد يحتوي على فاصلة عشرية مثل <code>1.5</code> في متغير نوعه <code>int</code> فإن هذا الأمر غير مسموح لأن هذا النوع مخصص لتخزين أعداد صحيحة لا تحتوي فاصلة.</p><p>إذاً مخالفتك لقواعد اللغة تستدعي إظهار خط أحمر تحت الكود الذي يسبب المشكلة حتى تصلحها، و إذا مررت الماوس فوق الخط الأحمر سيظهر لك سبب المشكلة.</p><h3>هل الإصلاح التلقائي للكود هو دائماً الحل الأفضل؟</h3><p>كلا طبعاً و إياك التفكير بأن الإقتراحات التي يظهرها لك البرنامج هي دائماً أفضل الحلول الممكنة.</p><p>لتفهم ما نقصده أكثر، في المثال السابق كان الأفضل تحويل نوع المتغير إلى <code>float</code> بدل النوع <code>double</code> لأن النوع <code>double</code> يحتاج مساحة أكبر في الذاكرة و هذه المساحة لم نكن بحاجتها أصلاً.</p>`
-                }
-            },
-            {
-                id: 3,
-                categoryKey: "debugging",
-                title: {
-                    en: "How to Analyze Runtime Error Messages",
-                    de: "Wie man Laufzeitfehlermeldungen analysiert",
-                    ar: "كيفية تحليل رسائل الخطأ عند التشغيل"
-                },
-                preview: {
-                    en: "Learn to read and understand error messages that appear while running your program and how to trace the source of the problem.",
-                    de: "Lernen Sie, Fehlermeldungen zu lesen und zu verstehen, die während der Programmausführung erscheinen, und wie Sie die Problemquelle zurückverfolgen.",
-                    ar: "تعلم قراءة وفهم رسائل الخطأ التي تظهر أثناء تشغيل البرنامج وكيفية تتبع مصدر المشكلة."
-                },
-                tags: ["Runtime", "Exceptions", "Debugging", "Error Analysis"],
-                content: {
-                    en: `<h3>Analyzing Runtime Error Messages</h3><p>Error messages that appear at runtime are not meant to scare you but to help you discover the location of the error. The more information you gather about the error, the easier it is to discover its cause and fix it.</p><p>As a simple example, the following program asks the user to enter a number. If you focus on the code, you'll notice that no problem or warning appears before running, but at runtime, a problem appears if the user enters the number as text instead of digits.</p><p>The three arrows we placed in the image point to three pieces of information we were able to gather by looking at the error:</p><ul><li>The first arrow indicates that the error occurred immediately after the user entered the word <code>one</code>.</li><li>The second arrow indicates that the error type is <code>InputMismatchException</code>.</li><li>The third arrow indicates that the error occurred exactly when trying to execute the code on line number 10.</li></ul><p>As someone who studied Java fundamentals, you learned what caused the problem by reading the error message, and thus you can place the code inside <code>try/catch</code> to protect the program from this error.</p>`,
-                    de: `<h3>Analyse von Laufzeitfehlermeldungen</h3><p>Fehlermeldungen, die zur Laufzeit erscheinen, sollen Sie nicht erschrecken, sondern Ihnen helfen, den Ort des Fehlers zu entdecken. Je mehr Informationen Sie über den Fehler sammeln, desto einfacher ist es, seine Ursache zu entdecken und zu beheben.</p><p>Als einfaches Beispiel: Das folgende Programm bittet den Benutzer, eine Zahl einzugeben. Wenn Sie sich auf den Code konzentrieren, werden Sie feststellen, dass vor der Ausführung kein Problem oder keine Warnung erscheint, aber zur Laufzeit erscheint ein Problem, wenn der Benutzer die Zahl als Text statt als Ziffern eingibt.</p>`,
-                    ar: `<h3>تحليل رسالة الخطأ الذي ظهر عند التشغيل</h3><p>رسائل الخطأ التي تظهر لك عند التشغيل ليس الهدف منها إرعابك بل مساعدتك في اكتشاف مكان الخطأ فكلما قمت بتجميع معلومات أكبر عن الخطأ كلما كان اكتشاف سببه و تصحيحه أسهل.</p><p>كمثال بسيط، البرنامج التالي يطلب من المستخدم إدخال عدد و إذا ركزت في الكود فإنك ستلاحظ أنه لا يظهر أي مشكلة أو تنبيه فيه قبل التشغيل و لكن عند التشغيل يظهر مشكلة في حال قام المستخدم بإدخال العدد كنص بدل أن يدخله كأرقام.</p>`
-                }
-            },
-            {
-                id: 4,
-                categoryKey: "solutions",
-                title: {
-                    en: "How to Search for Programming Solutions on Google",
-                    de: "Wie man nach Programmierlösungen bei Google sucht",
-                    ar: "كيف تبحث عن حل للمشكلة في جوجل"
-                },
-                preview: {
-                    en: "The best methods for searching for programming problem solutions in search engines and getting accurate results from StackOverflow and other platforms.",
-                    de: "Die besten Methoden zur Suche nach Programmierproblemlösungen in Suchmaschinen und zum Erhalten genauer Ergebnisse.",
-                    ar: "أفضل الطرق للبحث عن حلول المشاكل البرمجية في محركات البحث والحصول على نتائج دقيقة من StackOverflow ومنصات أخرى."
-                },
-                tags: ["Google", "StackOverflow", "Search", "Solutions"],
-                content: {
-                    en: `<h3>How Do I Search for a Solution to a Problem on Google?</h3><p>There are several ways to search for solutions to code problems, but generally, you'll need to search in English, not Arabic, because official programming language references and websites dedicated to providing programming problem solutions are written in English.</p><p>Always start the problem with the name of the programming language you're using. If you're using Java and want to search for the meaning of the error from the previous example, you should search like this:</p><div class="code-block"><pre>java java.util.InputMismatchException</pre></div><p>In this case, any website that explains this error - you can read what they wrote about it and benefit from it. The first result is usually from StackOverflow.</p>`,
-                    de: `<h3>Wie suche ich nach einer Lösung für ein Problem bei Google?</h3><p>Es gibt mehrere Möglichkeiten, nach Lösungen für Codeprobleme zu suchen, aber im Allgemeinen müssen Sie auf Englisch suchen, nicht auf Arabisch, da offizielle Referenzen für Programmiersprachen und Websites, die sich der Bereitstellung von Programmierproblemlösungen widmen, auf Englisch verfasst sind.</p>`,
-                    ar: `<h3>كيف أبحث عن حل للمشكلة في جوجل؟</h3><p>هناك عدة طرق للبحث عن حلول للمشاكل التي تظهر في الكود و لكن بشكل عام سيكون عليك إجراء البحث باللغة الإنجليزية و ليس العربية لأن المراجع الرسمية للغات البرمجة و المواقع المخصصة لإعطاء حلول للمشاكل البرمجية مكتوبة باللغة الإنجليزية.</p><p>دائماً إبدأ المشكلة بإسم اللغة البرمجية التي تستخدمها فإذا كنت تستخدم لغة java و تريد البحث عن معنى الخطأ الذي ظهر لنا في المثال السابق فسيكون عليك البحث كالتالي:</p><div class="code-block"><pre>java java.util.InputMismatchException</pre></div><p>في هذه الحالة أي موقع تجده شرح هذا الخطأ يمكنك قراءة ما كتبه عنه و الإستفادة منه. أول النتائج في العادة سيكون من موقع stackoverflow.</p>`
-                }
-            },
-            {
-                id: 5,
-                categoryKey: "debugging",
-                title: {
-                    en: "Why Fixing One Error Leads to More Errors",
-                    de: "Warum das Beheben eines Fehlers zu mehr Fehlern führt",
-                    ar: "مشكلة ظهور خطأ وإصلاحه يؤدي لظهور أخطاء أخرى"
-                },
-                preview: {
-                    en: "Why do new errors appear after fixing the main error? And how to avoid this common problem that beginners face daily.",
-                    de: "Warum erscheinen neue Fehler nach der Behebung des Hauptfehlers? Und wie vermeidet man dieses häufige Problem.",
-                    ar: "لماذا تظهر أخطاء جديدة بعد إصلاح الخطأ الأساسي؟ وكيف تتجنب هذه المشكلة التي يواجهها المبتدئون يومياً."
-                },
-                tags: ["Cascading Errors", "Debugging", "Fixing", "Beginners"],
-                content: {
-                    en: `<h3>One Error Fixed, Two More Appear?</h3><p>Sometimes you see the program telling you there's only one error in the code. You think that once you fix it, the program will work. But you're surprised when other errors appear because of the change you made to the code instead of the program working.</p><p>The cause of this problem is that you wrote a lot of code without testing it and making sure it works as expected. What usually happens is that while writing code, you made a logical error somewhere, and of course, you didn't notice any problem because you didn't test it.</p><p>To avoid falling into this problem, don't write a lot of code without testing whether its results are correct. If you write 1000 lines of code without testing, and finally discover there was a logical problem from the beginning, you'll have to rewrite all the code from scratch.</p><p>In summary: always divide your program into steps, and test the results of each step you perform.</p>`,
-                    de: `<h3>Ein Fehler behoben, zwei weitere erscheinen?</h3><p>Manchmal sehen Sie, dass das Programm Ihnen mitteilt, dass nur ein Fehler im Code vorhanden ist. Sie denken, sobald Sie ihn beheben, wird das Programm funktionieren. Aber Sie sind überrascht, wenn andere Fehler aufgrund der Änderung erscheinen, die Sie am Code vorgenommen haben.</p>`,
-                    ar: `<h3>ظهر لي خطأ واحد، قمت بإصلاحه فظهر لي خطأين؟</h3><p>أحياناً ترى البرنامج يخبرك بوجود خطأ واحد فقط في الكود فتظن أنك بمجرد إصلاحه فإن البرنامج سيعمل و لكنك تتفاجئ في ظهور أخطاء أخرى بسبب التغيير الذي أجريته على الكود بدل أن يعمل البرنامج.</p><p>سبب حدوث هذه المشكلة هو قيامك بكتابة الكثير من الأكواد من دون تجربتها و التأكد ما إن كان يعمل كما يجب أم لا.</p><p>لتجنب الوقوع في هكذا مشكلة، لا تقم بكتابة الكثير من الكود بدون تجربة ما إن كانت نتائجه صحيحة. قم دائماً بتقسيم برنامجك لخطوات و كل خطوة تقوم بأدائها قم باختبار نتائجها.</p>`
-                }
-            },
-            {
-                id: 6,
-                categoryKey: "debugging",
-                title: {
-                    en: "Unknown Errors Caused by Previous Commands",
-                    de: "Unbekannte Fehler durch vorherige Befehle",
-                    ar: "أخطاء غير معروفة سببها أوامر سابقة"
-                },
-                preview: {
-                    en: "How to discover errors where the real cause is previous commands in the code, not in the line indicated by the error message.",
-                    de: "Wie man Fehler entdeckt, bei denen die wahre Ursache in vorherigen Befehlen im Code liegt, nicht in der vom Fehler angezeigten Zeile.",
-                    ar: "كيف تكتشف الأخطاء التي يكون سببها الحقيقي أوامر سابقة في الكود وليس في السطر المشار إليه."
-                },
-                tags: ["Semicolon", "Indentation", "Syntax", "Hidden Errors"],
-                content: {
-                    en: `<h3>Errors with Unknown Causes from Previous Commands</h3><p>I see beginners in programming fall into this problem daily, which is why it's the first problem I think of when a student tells me there's a problem in the code.</p><p>Everyone falls into this problem, but depending on the programming language you're using, you fall into it differently. For example, those studying Java or C++ face problems with semicolons, and those studying Python face problems with indentations that should be added before commands.</p><p>A beginner using a language that requires adding a semicolon at the end of each command sometimes forgets to add it and sometimes adds it in a place where it shouldn't be added. In both cases, the code will have a problem either before running or a logical problem that appears at runtime.</p>`,
-                    de: `<h3>Fehler mit unbekannten Ursachen durch vorherige Befehle</h3><p>Ich sehe Anfänger in der Programmierung täglich in dieses Problem fallen, weshalb es das erste Problem ist, an das ich denke, wenn ein Student mir sagt, dass es ein Problem im Code gibt.</p>`,
-                    ar: `<h3>أخطاء غير معروفة سببها أوامر سابقة</h3><p>هذه المشكلة يومياً أرى المبتدئين في تعلم البرمجة يقعوا بها لهذا هي أول مشكلة أفكر باحتمالية وجودها عندما يخبرني أحد طلابي بوجود مشكلة في الكود.</p><p>الجميع يقع في هذه المشكلة و لكن على حسب لغة البرمجة التي تستخدمها فإنك تقع بها بطريقة مختلفة، فعلى سبيل المثال من يدرس لغة جافا أو لغة ++C يواجه مشاكل مع الفاصلة المنقوطة (Semicolon) و من يدرس لغة بايثون يواجه مشاكل مع المسافات الفارغة (Indentations).</p>`
-                }
-            }
-        ];
-
-        // ============================================
-        // SOLUTIONS DATABASE
-        // ============================================
-        const solutionsDB = [
-            {
-                id: 1,
-                lang: "JavaScript",
-                levelKey: "beginner",
-                title: {
-                    en: "Fix Async/Await Returning Undefined",
-                    de: "Async/Await gibt undefined zurück - Lösung",
-                    ar: "حل مشكلة Async/Await ترجع undefined"
-                },
-                description: {
-                    en: "Problem: async function returns undefined instead of expected data. Complete cause and solution:",
-                    de: "Problem: Async-Funktion gibt undefined statt erwarteter Daten zurück. Vollständige Ursache und Lösung:",
-                    ar: "المشكلة: الدالة async ترجع undefined بدل البيانات المتوقعة. السبب والحل الكامل:"
-                },
-                content: {
-                    en: `<h3>Cause of the Problem</h3><p>When using async/await with fetch, if you don't handle the response correctly, the function may return undefined. This happens because you might forget:</p><ul><li>Using await with response.json()</li><li>Checking response.ok before trying to read the data</li><li>Handling errors using try/catch</li></ul>`,
-                    de: `<h3>Ursache des Problems</h3><p>Bei der Verwendung von async/await mit fetch kann die Funktion undefined zurückgeben, wenn Sie die Antwort nicht korrekt behandeln. Dies geschieht, weil Sie möglicherweise vergessen:</p><ul><li>await mit response.json() zu verwenden</li><li>response.ok zu überprüfen, bevor Sie versuchen, die Daten zu lesen</li><li>Fehler mit try/catch zu behandeln</li></ul>`,
-                    ar: `<h3>سبب المشكلة</h3><p>عند استخدام async/await مع fetch، إذا لم تتعامل مع الـ response بشكل صحيح، قد ترجع الدالة undefined. هذا يحدث لأنك قد تنسى:</p><ul><li>استخدام await مع response.json()</li><li>التحقق من response.ok قبل محاولة قراءة البيانات</li><li>التعامل مع الأخطاء باستخدام try/catch</li></ul>`
-                },
-                code: `async function fetchUserData(userId) {
-            try {
-                const response = await fetch(
-                    \`https://api.example.com/users/\${userId}\`
-                );
-                
-                if (!response.ok) {
-                    throw new Error(
-                        \`HTTP error! Status: \${response.status}\`
-                    );
-                }
-                
-                const data = await response.json();
-                
-                if (!data) {
-                    console.warn('No data received');
-                    return null;
-                }
-                
-                return data;
-            } catch (error) {
-                console.error('Fetch error:', error.message);
-                return null;
-            }
-        }
-
-        // Usage example
-        const user = await fetchUserData(123);
-        console.log(user);`,
-                tags: ["async", "await", "fetch", "undefined", "promise", "try-catch"]
-            },
-            {
-                id: 2,
-                lang: "JavaScript",
-                levelKey: "intermediate",
-                title: {
-                    en: "Understanding Closures and Scope in JavaScript",
-                    de: "Closures und Scope in JavaScript verstehen",
-                    ar: "فهم Closures والـ Scope في JavaScript"
-                },
-                description: {
-                    en: "Problem: Variables inside closures don't update as expected. Complete solution with factory functions and private variables.",
-                    de: "Problem: Variablen in Closures aktualisieren sich nicht wie erwartet. Vollständige Lösung mit Factory-Funktionen.",
-                    ar: "المشكلة: المتغيرات داخل closure لا تتحدث كما هو متوقع. الحل الكامل باستخدام factory functions والمتغيرات الخاصة."
-                },
-                content: {
-                    en: `<h3>Cause of the Problem</h3><p>Closures in JavaScript allow inner functions to access outer function variables even after the outer function has finished executing. Problems occur when:</p><ul><li>You expect the variable to update on each call</li><li>You don't understand how lexical scope works</li><li>You use var instead of let in loops</li></ul>`,
-                    de: `<h3>Ursache des Problems</h3><p>Closures in JavaScript ermöglichen inneren Funktionen den Zugriff auf äußere Funktionsvariablen, auch nachdem die äußere Funktion beendet ist. Probleme treten auf, wenn:</p>`,
-                    ar: `<h3>سبب المشكلة</h3><p>الـ closures في JavaScript تسمح للدوال الداخلية بالوصول إلى متغيرات الدوال الخارجية حتى بعد انتهاء تنفيذ الدالة الخارجية. المشكلة تحدث عندما:</p><ul><li>تتوقع أن المتغير يتحدث في كل استدعاء</li><li>لا تفهم كيفية عمل lexical scope</li><li>تستخدم var بدل let في الحلقات</li></ul>`
-                },
-                code: `// Common problem - using var in loops
-        for (var i = 0; i < 3; i++) {
-            setTimeout(() => console.log(i), 1000);
-        }
-        // Output: 3, 3, 3
-
-        // Solution 1 - using let
-        for (let i = 0; i < 3; i++) {
-            setTimeout(() => console.log(i), 1000);
-        }
-        // Output: 0, 1, 2
-
-        // Solution 2 - using closure (factory)
-        function createCounter(initialValue = 0) {
-            let count = initialValue;
-            
-            return {
-                increment: () => ++count,
-                decrement: () => --count,
-                getValue: () => count,
-                reset: () => { 
-                    count = initialValue; 
-                }
+        // ========== FULL ANIMATED SVG ILLUSTRATIONS ==========
+        function getSVG(courseId, lessonIdx) {
+            const svgs = {
+                html: [
+                    `<svg viewBox="0 0 500 160" class="svg-illustration"><rect x="10" y="10" width="480" height="140" rx="10" fill="#FFF" stroke="#1A1A1A" stroke-width="3"/><text x="30" y="45" font-size="16" font-family="monospace" fill="#1A1A1A">&lt;!DOCTYPE html&gt;</text><text x="30" y="70" font-size="15" font-family="monospace" fill="#333">&lt;html&gt;</text><text x="50" y="95" font-size="14" font-family="monospace" fill="#555">&lt;head&gt;...&lt;/head&gt;</text><text x="120" y="95" font-size="14" font-family="monospace" fill="#555">&lt;body&gt;...&lt;/body&gt;</text><text x="30" y="120" font-size="15" font-family="monospace" fill="#333">&lt;/html&gt;</text><circle cx="460" cy="30" r="8" fill="#1A1A1A"><animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/></circle><rect x="430" y="100" width="40" height="8" fill="#1A1A1A"><animate attributeName="width" values="40;60;40" dur="1.5s" repeatCount="indefinite"/></rect></svg>`,
+                    `<svg viewBox="0 0 500 140" class="svg-illustration"><rect x="10" y="10" width="480" height="120" rx="10" fill="#FFF" stroke="#1A1A1A" stroke-width="3"/><text x="30" y="45" font-size="14" font-family="monospace" fill="#1A1A1A">&lt;header&gt;Logo &amp; Nav&lt;/header&gt;</text><text x="30" y="70" font-size="14" font-family="monospace" fill="#333">&lt;main&gt;Content area&lt;/main&gt;</text><text x="30" y="95" font-size="14" font-family="monospace" fill="#333">&lt;footer&gt;© 2026&lt;/footer&gt;</text><circle cx="450" cy="40" r="6" fill="#1A1A1A"><animate attributeName="r" values="6;10;6" dur="1.2s" repeatCount="indefinite"/></circle></svg>`
+                ],
+                css: [
+                    `<svg viewBox="0 0 500 140" class="svg-illustration"><rect x="10" y="10" width="480" height="120" rx="10" fill="#FFF" stroke="#1A1A1A" stroke-width="3"/><text x="30" y="45" font-size="14" font-family="monospace" fill="#1A1A1A">selector {</text><text x="50" y="70" font-size="13" font-family="monospace" fill="#555">  property: value;</text><text x="30" y="95" font-size="14" font-family="monospace" fill="#1A1A1A">}</text><rect x="350" y="50" width="80" height="8" fill="#1A1A1A"><animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/></rect></svg>`
+                ],
+                python: [
+                    `<svg viewBox="0 0 500 120" class="svg-illustration"><rect x="10" y="10" width="480" height="100" rx="10" fill="#FFF" stroke="#1A1A1A" stroke-width="3"/><text x="30" y="45" font-size="16" font-family="monospace" fill="#1A1A1A">print("Hello World")</text><text x="30" y="75" font-size="12" font-family="monospace" fill="#555"># Simple Python code</text><path d="M400,30 L420,50 L400,70" stroke="#1A1A1A" stroke-width="3" fill="none"><animate attributeName="stroke-dasharray" values="0,30;30,0" dur="1s" repeatCount="indefinite"/></path></svg>`
+                ],
+                cpp: [
+                    `<svg viewBox="0 0 500 110" class="svg-illustration"><rect x="10" y="10" width="480" height="90" rx="10" fill="#FFF" stroke="#1A1A1A" stroke-width="3"/><text x="30" y="45" font-size="14" font-family="monospace" fill="#1A1A1A">#include &lt;iostream&gt;</text><text x="30" y="70" font-size="14" font-family="monospace" fill="#333">int main() { return 0; }</text><circle cx="420" cy="60" r="5" fill="#1A1A1A"><animate attributeName="cx" values="420;450;420" dur="2s" repeatCount="indefinite"/></circle></svg>`
+                ],
+                php: [
+                    `<svg viewBox="0 0 500 120" class="svg-illustration"><rect x="10" y="10" width="480" height="100" rx="10" fill="#FFF" stroke="#1A1A1A" stroke-width="3"/><text x="30" y="45" font-size="15" font-family="monospace" fill="#1A1A1A">&lt;?php echo "Hello"; ?&gt;</text><text x="30" y="70" font-size="12" font-family="monospace" fill="#555">// Server-side script</text><rect x="380" y="40" width="60" height="4" fill="#1A1A1A"><animate attributeName="opacity" values="1;0.2;1" dur="1s" repeatCount="indefinite"/></rect></svg>`
+                ],
+                react: [
+                    `<svg viewBox="0 0 500 120" class="svg-illustration"><rect x="10" y="10" width="480" height="100" rx="10" fill="#FFF" stroke="#1A1A1A" stroke-width="3"/><text x="30" y="45" font-size="14" font-family="monospace" fill="#1A1A1A">function App() {</text><text x="50" y="70" font-size="13" font-family="monospace" fill="#333">return &lt;h1&gt;Hello&lt;/h1&gt;;</text><rect x="380" y="40" width="50" height="8" fill="#1A1A1A"><animate attributeName="width" values="50;90;50" dur="1.4s" repeatCount="indefinite"/></rect></svg>`
+                ]
             };
+            const courseSvgs = svgs[courseId] || svgs['html'];
+            return courseSvgs[lessonIdx % courseSvgs.length];
         }
 
-        const counter = createCounter(10);
-        console.log(counter.increment()); // 11
-        console.log(counter.increment()); // 12
-        console.log(counter.getValue());  // 12`,
-                tags: ["closure", "scope", "var", "let", "private", "factory"]
-            },
-            {
-                id: 3,
-                lang: "Java",
-                levelKey: "beginner",
-                title: {
-                    en: "Fix InputMismatchException in Java",
-                    de: "InputMismatchException in Java beheben",
-                    ar: "حل مشكلة InputMismatchException في Java"
-                },
-                description: {
-                    en: "Problem: Error appears when the user enters text instead of a number. Complete solution with try/catch and input validation.",
-                    de: "Problem: Fehler erscheint, wenn der Benutzer Text statt einer Zahl eingibt. Vollständige Lösung mit try/catch.",
-                    ar: "المشكلة: الخطأ يظهر عندما يقوم المستخدم بإدخال نص بدل رقم. الحل الكامل مع try/catch والتحقق من المدخلات."
-                },
-                content: {
-                    en: `<h3>Cause of the Problem</h3><p>When using Scanner to read user input, if the user enters an unexpected data type (such as text instead of a number), InputMismatchException is thrown.</p><h3>Solution Using try/catch</h3>`,
-                    de: `<h3>Ursache des Problems</h3><p>Bei Verwendung von Scanner zum Lesen von Benutzereingaben wird eine InputMismatchException ausgelöst, wenn der Benutzer einen unerwarteten Datentyp eingibt.</p>`,
-                    ar: `<h3>سبب المشكلة</h3><p>عند استخدام Scanner لقراءة مدخلات المستخدم، إذا أدخل المستخدم نوع بيانات غير متوقع (مثل نص بدل رقم)، يتم رمي InputMismatchException.</p><h3>الحل باستخدام try/catch</h3>`
-                },
-                code: `import java.util.Scanner;
-        import java.util.InputMismatchException;
-
-        public class SafeInputReader {
-            public static void main(String[] args) {
-                Scanner scanner = new Scanner(System.in);
-                int number = 0;
-                boolean validInput = false;
-                
-                while (!validInput) {
-                    try {
-                        System.out.print("Enter a number: ");
-                        number = scanner.nextInt();
-                        validInput = true;
-                    } catch (InputMismatchException e) {
-                        System.out.println(
-                            "Error: Please enter a valid integer!"
-                        );
-                        scanner.nextLine();
-                    }
+        // ========== QUIZ GENERATOR (10 MCQs) ==========
+        function generateQuiz(courseId, topicName, lang) {
+            const mcqs = [];
+            const topics = {
+                html: ['<h1>','<p>','<a>','<img>','<ul>','<ol>','<table>','<div>','<span>','<form>'],
+                css: ['color','font-size','margin','padding','border','display','position','flexbox','grid','background'],
+                python: ['print()','def','if','for','while','list','dict','str','int','float'],
+                cpp: ['cout','cin','int','string','vector','class','return','void','main()','#include'],
+                php: ['echo','$','array','function','class','foreach','if','else','POST','GET'],
+                react: ['useState','JSX','props','component','useEffect','Router','Redux','hooks','render','key']
+            };
+            const pool = topics[courseId] || topics['html'];
+            const isAr = lang === 'ar';
+            for(let i=0; i<10; i++) {
+                const word = pool[i % pool.length];
+                const correct = word;
+                const options = new Set([correct]);
+                while(options.size < 4) {
+                    const rand = pool[Math.floor(Math.random() * pool.length)];
+                    if(rand !== correct) options.add(rand);
                 }
-                
-                System.out.println("You entered: " + number);
-                scanner.close();
+                const optsArr = [...options].sort(() => Math.random() - 0.5);
+                mcqs.push({
+                    question: isAr ? `أي مما يلي يمثل ${word} بشكل صحيح؟` : `Which of the following correctly represents ${word}?`,
+                    options: optsArr,
+                    correct
+                });
             }
-        }`,
-                tags: ["java", "scanner", "exception", "InputMismatchException", "try-catch"]
-            },
-            {
-                id: 4,
-                lang: "Python",
-                levelKey: "beginner",
-                title: {
-                    en: "Fix IndentationError in Python",
-                    de: "IndentationError in Python beheben",
-                    ar: "حل مشكلة IndentationError في Python"
-                },
-                description: {
-                    en: "Problem: Indentation errors in Python due to mixing spaces and tabs. Complete solution with proper formatting rules.",
-                    de: "Problem: Einrückungsfehler in Python durch Mischen von Leerzeichen und Tabs. Vollständige Lösung.",
-                    ar: "المشكلة: أخطاء المسافات البادئة (Indentation) في بايثون بسبب خلط المسافات مع التبويب. الحل الكامل مع قواعد التنسيق."
-                },
-                content: {
-                    en: `<h3>Cause of the Problem</h3><p>In Python, indentation is mandatory to define code blocks. Any mixing between spaces and tabs or inconsistency in the number of spaces leads to IndentationError.</p><h3>Correct Rules</h3><ul><li>Use 4 spaces per level</li><li>Don't mix spaces and tabs</li><li>Ensure all code at the same level is aligned</li></ul>`,
-                    de: `<h3>Ursache des Problems</h3><p>In Python ist Einrückung obligatorisch, um Codeblöcke zu definieren. Jede Mischung zwischen Leerzeichen und Tabs führt zu IndentationError.</p>`,
-                    ar: `<h3>سبب المشكلة</h3><p>في بايثون، المسافات البادئة (indentation) إجبارية لتحديد الكتل البرمجية. أي خلط بين المسافات وعلامات التبويب (tabs) أو عدم اتساق عدد المسافات يؤدي إلى IndentationError.</p><h3>القواعد الصحيحة</h3><ul><li>استخدم 4 مسافات لكل مستوى</li><li>لا تخلط بين المسافات وعلامات التبويب</li><li>تأكد من محاذاة كل الكود في نفس المستوى</li></ul>`
-                },
-                code: `# Wrong - mixing tabs and spaces
-        def greet(name):
-            print("Hello")  # spaces
-                print(name)  # tab
+            return mcqs;
+        }
 
-        # Correct - consistent spacing
-        def greet(name):
-            print("Hello, " + name)
-            if name == "Ahmed":
-                print("Welcome back!")
-            else:
-                print("Nice to meet you!")
+        // ========== LESSON CONTENT (150 lines simplified) ==========
+        function generateLessonContent(courseId, lessonIdx, lang) {
+            const lessonNum = lessonIdx + 1;
+            const isAr = lang === 'ar';
+            const courseNames = { html:{en:'HTML',ar:'HTML'}, css:{en:'CSS',ar:'CSS'}, python:{en:'Python',ar:'بايثون'}, cpp:{en:'C++',ar:'سي بلس بلس'}, php:{en:'PHP',ar:'بي اتش بي'}, react:{en:'React',ar:'رياكت'} };
+            const cn = courseNames[courseId] || courseNames['html'];
+            const cname = isAr ? cn.ar : cn.en;
+            const svgPlaceholder = getSVG(courseId, lessonIdx);
+            const phase = lessonIdx < 5 ? 'beginner' : lessonIdx < 20 ? 'intermediate' : 'advanced';
+            const phaseLabel = isAr ? (phase==='beginner'?'مبتدئ':phase==='intermediate'?'متوسط':'متقدم') : phase.charAt(0).toUpperCase()+phase.slice(1);
 
-        # Tips:
-        # 1. Use an editor that shows whitespace
-        # 2. Enable "convert tabs to spaces"
-        # 3. Use pylint or flake8 to check`,
-                tags: ["python", "indentation", "syntax error", "spaces", "tabs"]
+            const topics = {
+                html: ['Introduction','Structure','Tags','Links','Lists','Tables','Forms','Semantic','Media','Canvas'],
+                css: ['Syntax','Selectors','Box Model','Colors','Typography','Display','Position','Flexbox','Grid','Responsive'],
+                python: ['Install','Hello World','Variables','Data Types','Strings','Numbers','Lists','If/Else','Loops','Functions'],
+                cpp: ['Intro','Setup','Hello World','Variables','Data Types','I/O','Operators','If/Else','Loops','Functions'],
+                php: ['Intro','Setup','Syntax','Variables','Strings','Arrays','If/Else','Loops','Functions','Forms'],
+                react: ['Intro','JSX','Components','Props','State','useState','useEffect','Events','Router','Fetching']
+            };
+            const topicName = topics[courseId]?.[lessonIdx % 10] || topics['html'][0];
+
+            const codeExamples = {
+                html: ['<!DOCTYPE html>\n<html>\n<head><title>Page</title></head>\n<body>\n  <h1>Hello</h1>\n  <p>Welcome</p>\n</body>\n</html>'],
+                css: ['h1 {\n  color: blue;\n  font-size: 24px;\n  text-align: center;\n}'],
+                python: ['print("Hello World")\nname = "Ahmed"\nprint(f"Welcome {name}")'],
+                cpp: ['#include <iostream>\nusing namespace std;\nint main() {\n  cout << "Hello World";\n  return 0;\n}'],
+                php: ['<?php\n  echo "Hello World";\n?>'],
+                react: ['function App() {\n  return <h1>Hello World</h1>;\n}']
+            };
+            const code = (codeExamples[courseId] || codeExamples['html'])[0];
+
+            const mcqs = generateQuiz(courseId, topicName, lang);
+            let quizHTML = `<div class="quiz-box"><h3>${isAr?'اختبر نفسك (10 أسئلة اختيارية)':'Test Yourself (10 MCQs)'}</h3>`;
+            mcqs.forEach((q, idx) => {
+                quizHTML += `<div class="quiz-item"><p class="quiz-question">${idx+1}. ${q.question}</p><div class="quiz-options">`;
+                q.options.forEach(opt => {
+                    quizHTML += `<button class="quiz-option" data-answer="${opt}" data-correct="${q.correct}" onclick="checkAnswer(this, '${q.correct}')">${opt}</button>`;
+                });
+                quizHTML += `</div><span class="quiz-feedback" style="display:none;"></span></div>`;
+            });
+            quizHTML += `</div>`;
+
+            const content = isAr ? `
+<h3><span style="background:#1A1A1A;color:#FFF;padding:3px 10px;border-radius:20px;font-size:0.7rem;">${phaseLabel}</span> الدرس ${lessonNum}: ${topicName} في ${cname}</h3>
+<p>مرحباً! في هذا الدرس سنتعلم <strong>${topicName}</strong> في ${cname}. الموضوع بسيط وممتع، وسنشرحه خطوة بخطوة. بعد هذا الدرس ستكون قادراً على استخدام ${topicName} بكل سهولة.</p>
+${svgPlaceholder}
+<h3>ما هو ${topicName}؟</h3>
+<p>تخيل أن ${topicName} هو أداة في صندوق أدواتك. بمجرد أن تفهمها، ستستخدمها في كل مشروع. إنها من الأساسيات المهمة جداً في ${cname}.</p>
+<div class="highlight-box"><p><strong>🎯 الهدف:</strong> بنهاية الدرس هتكون فاهم ${topicName} كويس وتقدر تستخدمه في كودك.</p></div>
+<h3>ليه ${topicName} مهم؟</h3>
+<p>${topicName} موجود في كل حتة في ${cname}. كل المبرمجين المحترفين يستخدموه يومياً. لو أتقنته هتلاقي الدنيا سهلة وبسيطة.</p>
+<h3>شرح خطوة بخطوة</h3>
+<p><strong>الخطوة 1:</strong> افهم الفكرة العامة. ${topicName} بيساعدك تتحكم في البرنامج وتحدد سلوكه.</p>
+<p><strong>الخطوة 2:</strong> بص على المثال العملي ده:</p>
+<div class="code-block"><pre>${escapeHTML(code)}</pre></div>
+<p><strong>الخطوة 3:</strong> جرب الكود بنفسك. غير فيه قيم، شوف النتيجة. التعلم بالممارسة هو أحسن طريق.</p>
+<h3>أخطاء شائعة</h3>
+<ul><li>عدم اختبار الكود بعد كل تغيير.</li><li>كتابة كود معقد بدل البسيط.</li><li>نسيان التعامل مع الحالات الخاصة.</li></ul>
+<h3>نصايح سريعة</h3>
+<p>خليك دايماً تختبر الكود، واقرأ رسائل الخطأ. متخافش من الأخطاء، دي بتبني خبرتك. اكتب كود كل يوم حتى لو شوية.</p>
+<p>جاهز للاختبار؟ تحت في صندوق الأسئلة عشان تتأكد إنك فهمت الدرس كويس.</p>
+${quizHTML}` : `
+<h3><span style="background:#1A1A1A;color:#FFF;padding:3px 10px;border-radius:20px;font-size:0.7rem;">${phaseLabel}</span> Lesson ${lessonNum}: ${topicName} in ${cname}</h3>
+<p>Welcome! In this lesson we'll learn <strong>${topicName}</strong> in ${cname}. It's simple and fun, and we'll explain it step by step. After this lesson you'll be able to use ${topicName} easily.</p>
+${svgPlaceholder}
+<h3>What is ${topicName}?</h3>
+<p>Think of ${topicName} as a tool in your toolbox. Once you understand it, you'll use it in every project. It's a very important fundamental in ${cname}.</p>
+<div class="highlight-box"><p><strong>🎯 Goal:</strong> By the end of this lesson you'll understand ${topicName} well and be able to use it in your code.</p></div>
+<h3>Why is ${topicName} important?</h3>
+<p>${topicName} appears everywhere in ${cname}. All professional developers use it daily. Once you master it, everything becomes easier.</p>
+<h3>Step-by-Step Explanation</h3>
+<p><strong>Step 1:</strong> Understand the general idea. ${topicName} helps you control the program and define its behavior.</p>
+<p><strong>Step 2:</strong> Look at this practical example:</p>
+<div class="code-block"><pre>${escapeHTML(code)}</pre></div>
+<p><strong>Step 3:</strong> Try the code yourself. Change values, see the result. Learning by doing is the best way.</p>
+<h3>Common Mistakes</h3>
+<ul><li>Not testing the code after each change.</li><li>Writing complex code instead of simple.</li><li>Forgetting to handle edge cases.</li></ul>
+<h3>Quick Tips</h3>
+<p>Always test your code and read error messages. Don't be afraid of errors – they build your experience. Write code every day, even just a little.</p>
+<p>Ready for the test? Below are some questions to make sure you understood the lesson well.</p>
+${quizHTML}`;
+
+            return content;
+        }
+
+        function checkAnswer(btn, correctAnswer) {
+            const parent = btn.parentElement;
+            parent.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('selected','correct','wrong'));
+            if(btn.dataset.answer === correctAnswer) {
+                btn.classList.add('correct');
+                parent.nextElementSibling.style.display = 'block';
+                parent.nextElementSibling.textContent = currentLang==='ar' ? '✅ إجابة صحيحة!' : '✅ Correct!';
+                parent.nextElementSibling.style.color = '#4CAF50';
+            } else {
+                btn.classList.add('wrong');
+                parent.querySelector(`.quiz-option[data-answer="${correctAnswer}"]`).classList.add('correct');
+                parent.nextElementSibling.style.display = 'block';
+                parent.nextElementSibling.textContent = currentLang==='ar' ? '❌ خطأ، الإجابة الصحيحة محددة.' : '❌ Wrong, correct answer is highlighted.';
+                parent.nextElementSibling.style.color = '#F44336';
             }
+            parent.querySelectorAll('.quiz-option').forEach(b => b.style.pointerEvents = 'none');
+        }
+
+        function createCourse(id, icon, nameEn, nameAr, descKey, lessonCount) {
+            const lessons = [];
+            for(let i=0; i<lessonCount; i++) {
+                lessons.push({
+                    title: { en: `${nameEn} Lesson ${i+1}`, ar: `${nameAr} درس ${i+1}` },
+                    getContent: function(lang) { return generateLessonContent(id, i, lang); }
+                });
+            }
+            return { id, icon, name:{en:nameEn,ar:nameAr}, descKey, lessons };
+        }
+
+        const coursesDB = [
+            createCourse('html','🌐','HTML','HTML','html_desc',50),
+            createCourse('css','🎨','CSS','CSS','css_desc',70),
+            createCourse('python','🐍','Python','بايثون','python_desc',72),
+            createCourse('cpp','⚡','C++','سي بلس بلس','cpp_desc',50),
+            createCourse('php','🐘','PHP','بي اتش بي','php_desc',60),
+            createCourse('react','⚛️','React','رياكت','react_desc',66)
         ];
 
-        // ============================================
-        // LANGUAGE SWITCHING
-        // ============================================
+        let activeCourseId = null, activeLessonIndex = 0;
+
         function switchLanguage(lang) {
             currentLang = lang;
-            
-            // Update buttons
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
             document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
-            
-            // Update body direction
-            if (lang === 'ar') {
-                document.body.classList.add('rtl');
-                document.documentElement.dir = 'rtl';
-                document.documentElement.lang = 'ar';
-            } else {
-                document.body.classList.remove('rtl');
-                document.documentElement.dir = 'ltr';
-                document.documentElement.lang = lang;
-            }
-            
-            // Update all translatable elements
+            document.body.classList.toggle('rtl', lang==='ar');
+            document.documentElement.dir = lang==='ar'?'rtl':'ltr';
+            document.documentElement.lang = lang;
             updateAllTranslations();
-            
-            // Save preference
-            localStorage.setItem('abdulrahman_tec_lang', lang);
+            localStorage.setItem('lang', lang);
+            if(activeCourseId) renderCourseDetail(activeCourseId);
         }
-
-        function t(key) {
-            return translations[currentLang]?.[key] || translations['en'][key] || key;
+        function updateAllTranslations() { document.querySelectorAll('[data-i18n]').forEach(el=>{ const k=el.getAttribute('data-i18n'); const tr=t(k); if(tr) el.textContent=tr; }); renderCourses(); }
+        function renderCourses() {
+            document.getElementById('coursesGrid').innerHTML = coursesDB.map((c,i)=>`
+            <div class="course-card" style="animation-delay:${i*0.06}s" onclick="openCourse('${c.id}')">
+              <div class="course-card-icon">${c.icon}</div>
+              <h3 class="course-card-title">${c.name[currentLang]||c.name.en}</h3>
+              <p class="course-card-desc">${t(c.descKey)}</p>
+              <span style="color:#000;font-weight:600;">${t('start_learning')}</span>
+            </div>`).join('');
         }
-
-        function updateAllTranslations() {
-            // Update elements with data-i18n
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                const translation = t(key);
-                if (translation) {
-                    el.textContent = translation;
-                }
-            });
-            
-            // Update placeholders
-            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-                const key = el.getAttribute('data-i18n-placeholder');
-                const translation = t(key);
-                if (translation) {
-                    el.placeholder = translation;
-                }
-            });
-            
-            // Re-render articles with current language
-            renderArticles();
-            
-            // Update solutions if visible
-            const solutionsSection = document.getElementById('solutionsSection');
-            if (!solutionsSection.classList.contains('hidden')) {
-                const problem = document.getElementById('userProblem').value;
-                if (problem.trim()) {
-                    solveProblem();
-                }
-            }
-        }
-
-        // ============================================
-        // RENDER ARTICLES
-        // ============================================
-        function renderArticles() {
-            const container = document.getElementById('articlesGrid');
-            
-            container.innerHTML = articlesDB.map((article, index) => `
-                <div class="article-card" style="animation-delay: ${index * 0.08}s" onclick="showArticleDetail(${article.id})">
-                    <span class="article-category">${t(article.categoryKey)}</span>
-                    <h3 class="article-title">${article.title[currentLang] || article.title.en}</h3>
-                    <p class="article-preview">${article.preview[currentLang] || article.preview.en}</p>
-                    <div class="article-tags">
-                        ${article.tags.map(tag => `<span class="article-tag">#${tag}</span>`).join('')}
-                    </div>
-                    <span class="read-more">
-                        ${t('read_more')}
-                    </span>
-                </div>
-            `).join('');
-        }
-
-        // ============================================
-        // SHOW ARTICLE DETAIL
-        // ============================================
-        function showArticleDetail(articleId) {
-            const article = articlesDB.find(a => a.id === articleId);
-            if (!article) return;
-            
-            document.getElementById('articlesSection').classList.add('hidden');
-            document.getElementById('solutionsSection').classList.remove('hidden');
-            
-            const container = document.getElementById('solutionsContainer');
+        function openCourse(id) { activeCourseId=id; activeLessonIndex=0; document.getElementById('coursesSection').classList.add('hidden'); document.getElementById('courseDetailSection').classList.remove('hidden'); renderCourseDetail(id); }
+        function renderCourseDetail(id) {
+            const course = coursesDB.find(c=>c.id===id);
+            if(!course) return;
+            const container = document.getElementById('courseDetailContainer');
+            const navHTML = course.lessons.map((l,i)=>`<button class="lesson-nav-btn ${i===activeLessonIndex?'active':''}" onclick="navigateLesson(${i})">${t('lesson')} ${i+1}</button>`).join('');
             container.innerHTML = `
-                <div class="solution-card">
-                    <div class="solution-header">
-                        <h2 class="solution-title">${article.title[currentLang] || article.title.en}</h2>
-                        <div class="solution-badges">
-                            <span class="badge badge-lang">${t(article.categoryKey)}</span>
-                        </div>
-                    </div>
-                    <div class="solution-content">
-                        ${article.content[currentLang] || article.content.en}
-                    </div>
-                    <div class="tags">
-                        ${article.tags.map(tag => `<span class="tag">#${tag}</span>`).join('')}
-                    </div>
-                    <button class="back-btn" onclick="backToArticles()">
-                        ${t('back_btn')}
-                    </button>
-                </div>
-            `;
-            
-            document.getElementById('solutionsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;background:#1A1A1A;padding:18px;border-radius:22px;color:#FFF;">
+              <span style="font-size:2.5rem;">${course.icon}</span>
+              <h2 style="font-size:1.7rem;font-weight:800;color:#FFF;flex:1;">${course.name[currentLang]||course.name.en}</h2>
+              <button class="back-btn" style="background:#FFF;color:#000;border-color:#FFF;" onclick="backToCourses()">${t('back_btn')}</button>
+            </div>
+            <div class="lesson-nav">${navHTML}</div>
+            <div class="lesson-content" id="lessonContentArea"></div>`;
+            loadLessonContent(course);
         }
-
-        // ============================================
-        // SOLVE PROBLEM
-        // ============================================
-        function solveProblem() {
-            const name = document.getElementById('userName').value.trim();
-            const problem = document.getElementById('userProblem').value.trim();
-            
-            if (!problem) {
-                alert(currentLang === 'ar' ? 'الرجاء كتابة مشكلتك البرمجية' : 
-                      currentLang === 'de' ? 'Bitte schreiben Sie Ihr Programmierproblem' : 
-                      'Please write your programming problem');
-                return;
-            }
-            
-            const problemLower = problem.toLowerCase();
-            
-            // Find matching solutions
-            const matchingSolutions = solutionsDB.filter(solution => {
-                const titleText = (solution.title[currentLang] || solution.title.en).toLowerCase();
-                const descText = (solution.description[currentLang] || solution.description.en).toLowerCase();
-                const contentText = (solution.content[currentLang] || solution.content.en).toLowerCase();
-                const searchText = `${titleText} ${descText} ${contentText} ${solution.lang} ${solution.tags.join(' ')}`.toLowerCase();
-                
-                return problemLower.split(/\s+/).some(word => 
-                    word.length > 2 && searchText.includes(word)
-                );
-            });
-            
-            // Find matching articles
-            const matchingArticles = articlesDB.filter(article => {
-                const titleText = (article.title[currentLang] || article.title.en).toLowerCase();
-                const previewText = (article.preview[currentLang] || article.preview.en).toLowerCase();
-                const contentText = (article.content[currentLang] || article.content.en).toLowerCase();
-                const searchText = `${titleText} ${previewText} ${contentText} ${article.tags.join(' ')}`.toLowerCase();
-                
-                return problemLower.split(/\s+/).some(word => 
-                    word.length > 2 && searchText.includes(word)
-                );
-            });
-            
-            document.getElementById('articlesSection').classList.add('hidden');
-            document.getElementById('solutionsSection').classList.remove('hidden');
-            
-            const container = document.getElementById('solutionsContainer');
-            
-            if (matchingSolutions.length === 0 && matchingArticles.length === 0) {
-                container.innerHTML = `
-                    <div class="no-results">
-                        <span class="icon">&#x1F914;</span>
-                        <h3>${name ? t('greeting') + ' ' + name + ', ' : ''}${t('no_results_title')}</h3>
-                        <p>${t('no_results_text')}</p>
-                        <button class="back-btn" onclick="backToArticles()">
-                            ${t('browse_articles')}
-                        </button>
-                    </div>
-                `;
-                return;
-            }
-            
-            let html = '';
-            
-            if (name) {
-                html += `<p style="text-align:center; color: var(--sky-blue-light); margin-bottom: 30px; font-size: 1.15rem; font-weight: 600;">
-                    &#x1F44B; ${t('greeting')} ${name}, ${t('found_solutions')}
-                </p>`;
-            }
-            
-            // Show solutions first
-            matchingSolutions.forEach(solution => {
-                html += `
-                    <div class="solution-card">
-                        <div class="solution-header">
-                            <h2 class="solution-title">${solution.title[currentLang] || solution.title.en}</h2>
-                            <div class="solution-badges">
-                                <span class="badge badge-lang">${solution.lang}</span>
-                                <span class="badge badge-level">${t(solution.levelKey)}</span>
-                            </div>
-                        </div>
-                        <div class="solution-content">
-                            <p style="font-weight: 600; color: var(--sky-blue-glow); margin-bottom: 15px;">
-                                ${solution.description[currentLang] || solution.description.en}
-                            </p>
-                            ${solution.content[currentLang] || solution.content.en}
-                        </div>
-                        ${solution.code ? `
-                            <div class="code-block">
-                                <button class="copy-btn" onclick="copyCode(this, \`${solution.code.replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`)">
-                                    ${t('copy_btn')}
-                                </button>
-                                <pre>${escapeHTML(solution.code)}</pre>
-                            </div>
-                        ` : ''}
-                        <div class="tags">
-                            ${solution.tags.map(tag => `<span class="tag">#${tag}</span>`).join('')}
-                        </div>
-                    </div>
-                `;
-            });
-            
-            // Show matching articles
-            matchingArticles.forEach(article => {
-                if (!matchingSolutions.length || matchingArticles.length <= 3) {
-                    html += `
-                        <div class="solution-card" style="border-color: rgba(0, 198, 255, 0.08);">
-                            <div class="solution-header">
-                                <h2 class="solution-title" style="font-size: 1.2rem;">${article.title[currentLang] || article.title.en}</h2>
-                                <div class="solution-badges">
-                                    <span class="badge badge-lang">${t(article.categoryKey)}</span>
-                                </div>
-                            </div>
-                            <p style="color: var(--gray); margin-bottom: 15px;">${article.preview[currentLang] || article.preview.en}</p>
-                            <button class="back-btn" onclick="showArticleDetail(${article.id})" style="font-size: 0.85rem;">
-                                ${t('read_more')}
-                            </button>
-                        </div>
-                    `;
-                }
-            });
-            
-            container.innerHTML = html;
-            document.getElementById('solutionsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        function loadLessonContent(course) {
+            const area = document.getElementById('lessonContentArea');
+            const lesson = course.lessons[activeLessonIndex];
+            area.innerHTML = `
+            ${lesson.getContent(currentLang)}
+            <div style="display:flex;justify-content:space-between;margin-top:24px;padding-top:16px;border-top:2px solid #1A1A1A;">
+              <button class="back-btn" onclick="navigateLesson(${activeLessonIndex-1})" ${activeLessonIndex===0?'style="opacity:0.35;pointer-events:none"':''}>← ${currentLang==='ar'?'السابق':'Previous'}</button>
+              <button class="back-btn" onclick="navigateLesson(${activeLessonIndex+1})" ${activeLessonIndex>=course.lessons.length-1?'style="opacity:0.35;pointer-events:none"':''}>${currentLang==='ar'?'التالي':'Next'} →</button>
+            </div>`;
+            document.getElementById('courseDetailSection').scrollIntoView({behavior:'smooth'});
         }
-
-        // ============================================
-        // BACK TO ARTICLES
-        // ============================================
-        function backToArticles() {
-            document.getElementById('articlesSection').classList.remove('hidden');
-            document.getElementById('solutionsSection').classList.add('hidden');
-            document.getElementById('articlesSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
-            document.getElementById('userProblem').value = '';
-            document.getElementById('userName').value = '';
-        }
-
-        // ============================================
-        // COPY CODE
-        // ============================================
-        function copyCode(button, code) {
-            const decoded = code
-                .replace(/\\n/g, '\n')
-                .replace(/\\'/g, "'")
-                .replace(/\\`/g, '`')
-                .replace(/\\$/g, '$');
-
-            navigator.clipboard.writeText(decoded).then(() => {
-                const originalHTML = button.innerHTML;
-                button.innerHTML = t('copied');
-                button.style.background = '#4CAF50';
-                button.style.borderColor = '#4CAF50';
-                button.style.color = 'white';
-                
-                setTimeout(() => {
-                    button.innerHTML = originalHTML;
-                    button.style.background = '';
-                    button.style.borderColor = '';
-                    button.style.color = '';
-                }, 2000);
-            }).catch(() => {
-                button.textContent = 'Failed';
-                setTimeout(() => {
-                    button.innerHTML = t('copy_btn');
-                }, 2000);
-            });
-        }
-
-        // ============================================
-        // ESCAPE HTML
-        // ============================================
-        function escapeHTML(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-
-        // ============================================
-        // CREATE BACKGROUND PARTICLES
-        // ============================================
-        function createParticles() {
-            const container = document.getElementById('particlesContainer');
-            const colors = ['#00C6FF', '#33D1FF', '#00E5FF', '#0099CC'];
-            
-            for (let i = 0; i < 20; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                const size = Math.random() * 3 + 1;
-                const startX = Math.random() * 100;
-                const duration = Math.random() * 8 + 6;
-                const delay = Math.random() * 8;
-                
-                particle.style.cssText = `
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${startX}%;
-                    bottom: -10px;
-                    background: ${colors[Math.floor(Math.random() * colors.length)]};
-                    animation-duration: ${duration}s;
-                    animation-delay: ${delay}s;
-                `;
-                
-                container.appendChild(particle);
-            }
-        }
-
-        // ============================================
-        // KEYBOARD SHORTCUT
-        // ============================================
-        document.addEventListener('keydown', (e) => {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-                e.preventDefault();
-                solveProblem();
+        function navigateLesson(idx) { const course = coursesDB.find(c=>c.id===activeCourseId); if(!course||idx<0||idx>=course.lessons.length) return; activeLessonIndex=idx; renderCourseDetail(activeCourseId); }
+        function backToCourses() { activeCourseId=null; document.getElementById('coursesSection').classList.remove('hidden'); document.getElementById('courseDetailSection').classList.add('hidden'); }
+        function escapeHTML(t) { const d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
+        document.addEventListener('click', function(e) {
+            if(e.target.classList.contains('copy-btn')) {
+                const pre = e.target.closest('.code-block')?.querySelector('pre');
+                if(pre) navigator.clipboard.writeText(pre.textContent).then(()=>{
+                    e.target.textContent = t('copied');
+                    setTimeout(()=>{ e.target.textContent = t('copy_btn'); }, 2000);
+                });
             }
         });
-
-        // ============================================
-        // INITIALIZATION
-        // ============================================
+        document.addEventListener('keydown', e=>{
+            if(e.key==='Escape' && activeCourseId) backToCourses();
+            if(e.key==='ArrowRight' && activeCourseId && !document.body.classList.contains('rtl')) navigateLesson(activeLessonIndex+1);
+            if(e.key==='ArrowLeft' && activeCourseId && !document.body.classList.contains('rtl')) navigateLesson(activeLessonIndex-1);
+        });
         function init() {
-            // Load saved language
-            const savedLang = localStorage.getItem('abdulrahman_tec_lang');
-            if (savedLang && translations[savedLang]) {
-                currentLang = savedLang;
-                document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-                const activeBtn = document.querySelector(`[data-lang="${savedLang}"]`);
-                if (activeBtn) activeBtn.classList.add('active');
-                
-                if (savedLang === 'ar') {
-                    document.body.classList.add('rtl');
-                    document.documentElement.dir = 'rtl';
-                    document.documentElement.lang = 'ar';
-                }
-            }
-            
+            const saved = localStorage.getItem('lang');
+            if(saved && translations[saved]) { currentLang=saved; document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active')); const btn=document.querySelector(`[data-lang="${saved}"]`); if(btn) btn.classList.add('active'); if(saved==='ar') { document.body.classList.add('rtl'); document.documentElement.dir='rtl'; document.documentElement.lang='ar'; } }
             updateAllTranslations();
-            renderArticles();
-            createParticles();
+            renderCourses();
         }
-
         init();
     </script>
 </body>
