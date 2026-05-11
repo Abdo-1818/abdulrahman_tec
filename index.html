@@ -31,6 +31,11 @@
             color: var(--text);
             line-height: 1.85; min-height:100vh; overflow-x:hidden;
             -webkit-font-smoothing: antialiased;
+            /* منع تحديد النص */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
         body.rtl { font-family:'Cairo','Inter',sans-serif; direction:rtl; }
         .container { max-width:1100px; margin:0 auto; padding:0 24px; position:relative; z-index:2; }
@@ -77,7 +82,6 @@
         .highlight-box { background:#F9F9F9; border:1.5px solid #1A1A1A; border-radius:14px; padding:16px; margin:16px 0; }
         .code-block { background:#F4F4F4; border:1.5px solid #BBB; border-radius:14px; padding:18px; position:relative; overflow-x:auto; margin:16px 0; direction:ltr; text-align:left; }
         .code-block pre { font-family:'JetBrains Mono',monospace; font-size:0.78rem; color:#1A1A1A; }
-        .copy-btn { position:absolute; top:10px; right:10px; background:#1A1A1A; color:#FFF; border:none; border-radius:50px; padding:5px 12px; cursor:pointer; font-size:0.7rem; }
         .svg-illustration { display:block; margin:16px auto; max-width:100%; height:auto; border:1.5px solid #CCC; border-radius:8px; background:#FAFAFA; }
         .quiz-box { background:#FFF; border:2px solid #1A1A1A; border-radius:14px; padding:20px; margin-top:25px; }
         .quiz-box h3 { border:none; padding-left:0; }
@@ -119,14 +123,39 @@
     <footer class="footer"><p>© 2026 <span>Abdulrahman Tec</span> | <span data-i18n="footer_text">Learn Programming From Scratch</span></p></footer>
 
     <script>
+        // ========== منع النسخ واللصق والنقر بزر الفأرة الأيمن ==========
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        document.addEventListener('keydown', function(e) {
+            // منع Ctrl+C, Ctrl+X, Ctrl+V, Ctrl+U, Ctrl+S, Ctrl+P, F12
+            if (e.ctrlKey && (e.key === 'c' || e.key === 'x' || e.key === 'v' || e.key === 'u' || e.key === 's' || e.key === 'p')) {
+                e.preventDefault();
+                return false;
+            }
+            if (e.key === 'F12') {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // محاولة إبطال السحب أيضًا
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+            return false;
+        });
+
+        // ========== الترجمات ==========
         const translations = {
-            en: { tagline:"Learn programming from scratch with Arabic & English", courses_title:"📚 Choose a Language", footer_text:"Learn Programming From Scratch", back_btn:"← Back", copy_btn:"📋 Copy", copied:"✅ Copied!", lesson:"Lesson", start_learning:"Start →", html_desc:"Build web page structures.", css_desc:"Master styling and design.", python_desc:"Popular beginner language.", cpp_desc:"High-performance programming.", php_desc:"Server-side web development.", react_desc:"Modern UI library." },
-            ar: { tagline:"تعلم البرمجة من الصفر مع العربية والإنجليزية", courses_title:"📚 اختر لغة", footer_text:"تعلم البرمجة من الصفر", back_btn:"← رجوع", copy_btn:"📋 نسخ", copied:"✅ تم النسخ", lesson:"درس", start_learning:"ابدأ ←", html_desc:"بناء هيكل صفحات الويب.", css_desc:"إتقان التصميم والتنسيق.", python_desc:"اللغة الأكثر شعبية للمبتدئين.", cpp_desc:"برمجة عالية الأداء.", php_desc:"تطوير الويب من الخادم.", react_desc:"مكتبة واجهات مستخدم حديثة." }
+            en: { tagline:"Learn programming from scratch with Arabic & English", courses_title:"📚 Choose a Language", footer_text:"Learn Programming From Scratch", back_btn:"← Back", lesson:"Lesson", start_learning:"Start →", html_desc:"Build web page structures.", css_desc:"Master styling and design.", python_desc:"Popular beginner language.", cpp_desc:"High-performance programming.", php_desc:"Server-side web development.", react_desc:"Modern UI library." },
+            ar: { tagline:"تعلم البرمجة من الصفر مع العربية والإنجليزية", courses_title:"📚 اختر لغة", footer_text:"تعلم البرمجة من الصفر", back_btn:"← رجوع", lesson:"درس", start_learning:"ابدأ ←", html_desc:"بناء هيكل صفحات الويب.", css_desc:"إتقان التصميم والتنسيق.", python_desc:"اللغة الأكثر شعبية للمبتدئين.", cpp_desc:"برمجة عالية الأداء.", php_desc:"تطوير الويب من الخادم.", react_desc:"مكتبة واجهات مستخدم حديثة." }
         };
         let currentLang = 'en';
         function t(k) { return translations[currentLang]?.[k] || translations['en'][k] || k; }
 
-        // ========== FULL ANIMATED SVG ILLUSTRATIONS ==========
+        // ========== رسوم SVG المتحركة الكاملة ==========
         function getSVG(courseId, lessonIdx) {
             const svgs = {
                 html: [
@@ -153,7 +182,7 @@
             return courseSvgs[lessonIdx % courseSvgs.length];
         }
 
-        // ========== QUIZ GENERATOR (10 MCQs) ==========
+        // ========== مولد الاختبارات (10 أسئلة اختيارية) ==========
         function generateQuiz(courseId, topicName, lang) {
             const mcqs = [];
             const topics = {
@@ -184,7 +213,7 @@
             return mcqs;
         }
 
-        // ========== LESSON CONTENT (150 lines simplified) ==========
+        // ========== محتوى الدرس (150 سطر تقريبًا) ==========
         function generateLessonContent(courseId, lessonIdx, lang) {
             const lessonNum = lessonIdx + 1;
             const isAr = lang === 'ar';
@@ -360,15 +389,6 @@ ${quizHTML}`;
         function navigateLesson(idx) { const course = coursesDB.find(c=>c.id===activeCourseId); if(!course||idx<0||idx>=course.lessons.length) return; activeLessonIndex=idx; renderCourseDetail(activeCourseId); }
         function backToCourses() { activeCourseId=null; document.getElementById('coursesSection').classList.remove('hidden'); document.getElementById('courseDetailSection').classList.add('hidden'); }
         function escapeHTML(t) { const d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
-        document.addEventListener('click', function(e) {
-            if(e.target.classList.contains('copy-btn')) {
-                const pre = e.target.closest('.code-block')?.querySelector('pre');
-                if(pre) navigator.clipboard.writeText(pre.textContent).then(()=>{
-                    e.target.textContent = t('copied');
-                    setTimeout(()=>{ e.target.textContent = t('copy_btn'); }, 2000);
-                });
-            }
-        });
         document.addEventListener('keydown', e=>{
             if(e.key==='Escape' && activeCourseId) backToCourses();
             if(e.key==='ArrowRight' && activeCourseId && !document.body.classList.contains('rtl')) navigateLesson(activeLessonIndex+1);
